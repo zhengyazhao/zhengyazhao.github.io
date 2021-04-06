@@ -1,37 +1,119 @@
-## Welcome to GitHub Pages
+# 联系方式
 
-You can use the [editor on GitHub](https://github.com/zhengyazhao/zyz.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+* 手机：18510600636（上班时间不方便接听电话）
+* Email：414282552@qq.com
+* QQ：414282552
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# 个人信息
 
-### Markdown
+* 郑亚招/男/1991
+* 本科/北京中山学院
+* 工作年限：6年
+* 技术博客：https://www.cnblogs.com/zhengyazhao/
+* 期望职位：netcore开发
+* 期望薪资：税前月薪30k
+* 期望城市：北京
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# 掌握技能
+1. MVC、三层架构、DDD等
+2. C#、NetCore、Java开发
+3. Docker、Docker-compose、docker-swarm应用、部署、维护
+4. 掌握基础Liunx操作命令
+5. 了解tcp/ip协议、http、https等
+6. 掌握git、svn等常用工具
+7. 了解redis、rabbitmq、kafka、elk、apollo、Prometheus等常用第三方组件
+8. 了解数据结构和MSSql、MySql、PGsql等常用数据库
+9. 了解面向对象设计思想,scrum敏捷开发,uml常规图
 
-```markdown
-Syntax highlighted code block
+# 工作经历
 
-# Header 1
-## Header 2
-### Header 3
+## 北京网学时代科技教育有限公司 （ 2019年9月 ~至今 ）离职原因：个人原因
 
-- Bulleted
-- List
+### 工作内容
 
-1. Numbered
-2. List
+&emsp;&emsp;任职期间主要负责系统日常维护、技术升级、代码review等相关工作。<br/>
 
-**Bold** and _Italic_ and `Code` text
+* 负责建立技术团队文档知识体系confluence(注:刚入职时，公司没有文档维护,一直采用svn+word的方式)
+* 负责Liunx 服务器日常维护工作
+* 技术升级30%的项目使用docker、gitlab、jenkins实现自动化发布
+* 协助部门负责人完善技术部门流程规范
+* 技术升级从netframe work 升级到net core
+* 项目过程管理采用scrum方式,每周一个迭代进行开发
 
-[Link](url) and ![Image](src)
-```
+### 考试管理系统
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### 简介
 
-### Jekyll Themes
+&emsp;&emsp;该项目是基于老版系统进行优化升级的版本,考虑到公司的业务方向的多变,所以单独把考试系统独立于其他系统,能够支持不同行业的考试。<br/>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zhengyazhao/zyz.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+&emsp;&emsp;项目提供给网校学员的一个通用考试系统,包含了**高级会计师、法考、教师资格证**的考试系统。<br/>
 
-### Support or Contact
+#### 技术介绍
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+* 框架：netcore 3.1
+* 数据库： postgresql
+* 架构：DDD分层架构,前期采用DDD思想进行拆分设计
+* 缓存：redis
+* 消息队列：rabbitmq
+* 配置中心：apollo
+* 部署方式：采用docker-compose部署在docker-swarm
+
+#### 项目介绍
+
+* 项目分为试题管理、试卷管理、考试管理、练习管理等模块。<br/>
+
+* 考试流程是用户预约考试=》开始考试=》获取试卷信息=》每分钟保存做题信息=》交卷<br/>
+
+* 在这个项目当中,我负责技术选型以及框架搭建。<br/>
+
+* 原有老系统当中是在考试时直接从数据库当中获取,新版系统在学员考试前,先把试卷加载到缓存当中,进行数据预热,把大部分用户请求的数据从内存中读取。<br/>
+
+* 由于考试学员较多,考虑到负载问题采用了docker swarm容器集群可以快速扩容。项目全链路压测单机平均tps维持在300左右。<br/>
+
+* 项目采用了DDD当中的战术设计,以真实的业务场景出发,把现实业务场景尽量的呈现在系统当中,但是在实践的过程当中,由于实现问题像cqrs等方式初期使用时团队其他小伙伴不是特别理解这么做的原因和好处.<br/>
+
+## 东泰高科装备科技有限公司（北京分公司） （ 2018.06-2019.09 ）离职原因:公司倒闭
+
+### MES系统系统
+
+#### 简介
+
+&emsp;&emsp;该项目主要是工厂内部把控生产质量、追踪生产问题、达到提高增加产能、提高质量降低成本为目的。<br/>
+
+#### 技术介绍
+* 框架：netcore 2.1
+* 数据库： mysql
+* 架构：仓库模式
+* 缓存：redis
+* 消息队列：rabbitmq
+* 部署方式：docker
+
+#### 个人职责
+* 负责MES系统当中的WIP模块核心业务开发、性能优化、需求梳理
+* 优化数据库的查询效率
+* 完善系统需求文档、设计文档的编写和检查小组内其他成员的编写情况
+* 开发订单管理,把订单缓存到redis当中,避免常用查询
+
+## 北京亿和博嘉科技教育有限公司 （ 2015.04-2018.04 ）离职原因:个人原因
+
+### 医师定考报名系统
+
+#### 简介
+
+&emsp;&emsp;该项目为了针对医生考试前的报名系统，由管理员负责分配学员的考试时间、考试信息。<br/>
+
+#### 技术介绍
+
+* 框架：MVC架构开发
+* 数据库：SQLServer
+* 缓存：redis
+
+#### 个人职责
+
+* 报名信息通过中间件同步到考试系统，数据接口用webAPI接口调用
+* 评估每次需求迭代对历史版本的影响范围、与PO、QA确认、解决遗留迭代BUG
+* 代码Review、重构
+* 完善系统需求文档、设计文档的编写
+
+# 致谢
+感谢您花时间阅读我的简历，期待能有机会和您共事。
