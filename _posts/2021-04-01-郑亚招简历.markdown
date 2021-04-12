@@ -7,7 +7,6 @@
 # 个人信息
 
 * 郑亚招/男/1991
-* 本科/北京中山学院
 * 工作年限：6年
 * 技术博客：https://www.cnblogs.com/zhengyazhao/
 * 期望职位：netcore开发
