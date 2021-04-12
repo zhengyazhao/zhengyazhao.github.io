@@ -11,7 +11,7 @@
 * 工作年限：6年
 * 技术博客：https://www.cnblogs.com/zhengyazhao/
 * 期望职位：netcore开发
-* 期望薪资：税前月薪30k
+* 期望薪资：面议
 * 期望城市：北京
 
 # 掌握技能
@@ -24,6 +24,7 @@
 7. 了解redis、rabbitmq、kafka、elk、apollo、Prometheus等常用第三方组件
 8. 了解数据结构和MSSql、MySql、PGsql等常用数据库
 9. 了解面向对象设计思想,scrum敏捷开发,uml常规图
+10. restful风格API
 
 # 工作经历
 
