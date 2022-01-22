@@ -1,3 +1,8 @@
+layout: post
+title: post-sample
+date: 2022/01/22
+category:  安装运维
+
 # centos 安装nginx
 
 1. 下载nginx 安装包
