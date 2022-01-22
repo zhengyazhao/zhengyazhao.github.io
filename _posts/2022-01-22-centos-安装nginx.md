@@ -2,7 +2,8 @@
 layout: post
 title: centos 安装nginx
 date: 2022/01/22 17:50
-category:  安装运维
+category:  OP
+
 ---
 
 
