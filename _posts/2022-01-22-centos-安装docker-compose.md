@@ -1,9 +1,9 @@
-````
+---
 layout: post
 title: centos 安装docker-compose
 date: 2022/01/20 17:50
 category:  OP
-````
+---
 
 ## 获取二进制
 
