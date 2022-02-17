@@ -1,8 +1,8 @@
 ---
 layout: post
-title: postgre集群搭建
+title: 配置ingressController
 date: 2022/01/21 17:50
-category:  数据库
+category:  k8s
 ---
 
 
