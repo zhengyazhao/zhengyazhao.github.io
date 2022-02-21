@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 配置storageClass
-date: 2022/02/21 17:50
-category:  k8s 
+title: 配置StorageClass
+date: 2022/02/17 17:50
+category:  k8s
 ---
 
 #  简介
