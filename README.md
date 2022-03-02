@@ -1,33 +1,34 @@
 ---
 layout: page
 title: 简介
-permalink: /about/
+permalink: /about
 ---
 
-## Theme Monos
-> Simple and lightweight theme for Jekyll
+# 公司环境
 
-### Features
-- Responsive.
-- Syntax Highlight
-- Most optimized theme for tech blog.
-- Lightweight with minimum stylesheet.
-- Easy to customize.
-- Offers category menu.
+----
 
-### _config.yml
-> Code block will look like this.
-```yml
-highlighter-theme: monokai //you can change your syntax color scheme.
-date_format: "%Y-%M-%D" //and date format.
-```
+### 生产环境
 
-### Screenshots
-#### Page
-![alt text](/public/img/screenshot-1.png)
-#### Articles
-![alt text](/public/img/screenshot-2.png)
-#### Page - Mobile
-![alt text](/public/img/screenshot-m1.png)
-#### Page - Articles
-![alt text](/public/img/screenshot-m2.png)
+|                                    |                                                           |                                       |                                              |                                             |                                                      |
+| ---------------------------------- | --------------------------------------------------------- | ------------------------------------- | -------------------------------------------- | ------------------------------------------- | ---------------------------------------------------- |
+| [官网](https://www.lingjiang.com/) | [题库后台](http://ksadmin.lj.com.cn/Html/Home/Login.html) | [爱名师](http://www.woaimingshi.com/) | [评审中心](http://mis.lingjiang.com/#/login) | [用户中心](http://auth.lingjiang.com/login) | [领匠后台](http://www.ysjhacc.com/manage/login.aspx) |
+
+
+
+### 测试环境
+
+
+
+### 开发环境
+
+
+
+
+
+### 其他
+
+|                                                |                                                  |
+| ---------------------------------------------- | ------------------------------------------------ |
+| [showdoc](http://showdoc.lingjiang.com/web/#/) | [k8s控制台](https://39.105.139.93:30001/#/login) |
+

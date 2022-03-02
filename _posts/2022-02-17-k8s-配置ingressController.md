@@ -63,7 +63,7 @@ metadata:
 
 &emsp;&emsp;之后运行**kubectl apply -f deploy.yaml**文件运行即可,运行效果如下:<br/>
 
-![image-20220217122400624](..\images\image-20220217122400624.png)
+![image-20220217122400624](/images/image-20220217122400624.png)
 
 
 
