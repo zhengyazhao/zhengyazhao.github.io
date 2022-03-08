@@ -1,8 +1,8 @@
 ---
 layout: post
-title: netcore通过get获取bitmap值乱码问题
+title: redis-netcore通过get获取bitmap值乱码问题
 date: 2022/03/08 17:50
-category:  redis
+category: redis
 ---
 
 
