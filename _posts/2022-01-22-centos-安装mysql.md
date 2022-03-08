@@ -2,7 +2,7 @@
 layout: post
 title: centos 安装mysql
 date: 2022/01/25 17:50
-category:  OP
+category:  database
 ---
 
 
