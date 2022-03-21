@@ -38,7 +38,7 @@ category:  centos
     docker run -tid --name es --network localnet -p 9200:9200 -p 9300:9300 --restart always elasticsearch:7.7.0
 
 
-   
+
 
 # 安装skywalking
 &emsp;&emsp;以下基于docker安装skywalking,先查找skywalking镜像,pull下来这两个镜像,一个是**skywalking服务**,**一个是ui显示**<br/>
@@ -53,10 +53,10 @@ category:  centos
 ## 运行skywalking-oap-server
 &emsp;&emsp;通过镜像启动skywalking服务镜像,此处一定要注意**配置时区**不然会出问题。<br/>
 
-    docker run -tid -p 1234:1234 -p 11800:11800 -p 12800:12800 --name oap --restart always -e SW_STORAGE=elasticsearch7 -e SW_STORAGE_ES_CLUSTER_NODES=172.24.194.195:9200 -v  oap_config:/home/skywalking/apache-skywalking-apm-bin/config  -e TZ=Asia/Shanghai   apache/skywalking-oap-server:8.7.0-es7
+    docker run -tid -p 1234:1234 -p 11800:11800 -p 12800:12800 --name oap --restart always -e SW_STORAGE=elasticsearch7 -e SW_STORAGE_ES_CLUSTER_NODES=172.24.194.195:9200 --mount type=volume,source=oap_config,target=/skywalking/config  -e TZ=Asia/Shanghai   apache/skywalking-oap-server:8.7.0-es7
+    
 
 
 ## 运行skywalking-ui
      docker run --name skywalking-ui -tid -p 8121:8080  --network localnet -e TZ=Asia/Shanghai  -e SW_OAP_ADDRESS=skywalking:12800 --restart always apache/skywalking-ui --security.user.admin.password=admin
-
 
