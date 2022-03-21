@@ -1,8 +1,8 @@
 ---
 layout: post
-title: centos部署skywalking
-date: 2022/03/25 17:50
-category:  centos
+title: centos 部署skywalking
+date: 2022/03/21 17:50
+category:  linux
 ---
 
 
