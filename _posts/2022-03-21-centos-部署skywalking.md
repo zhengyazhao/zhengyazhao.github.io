@@ -1,6 +1,6 @@
 ---
 layout: post
-title: centos 部署skywalking
+title: centos部署skywalking
 date: 2022/03/21 17:50
 category:  linux
 ---
@@ -54,7 +54,7 @@ category:  linux
 &emsp;&emsp;通过镜像启动skywalking服务镜像,此处一定要注意**配置时区**不然会出问题。<br/>
 
     docker run -tid -p 1234:1234 -p 11800:11800 -p 12800:12800 --name oap --restart always -e SW_STORAGE=elasticsearch7 -e SW_STORAGE_ES_CLUSTER_NODES=172.24.194.195:9200 --mount type=volume,source=oap_config,target=/skywalking/config  -e TZ=Asia/Shanghai   apache/skywalking-oap-server:8.7.0-es7
-    
+
 
 
 ## 运行skywalking-ui
