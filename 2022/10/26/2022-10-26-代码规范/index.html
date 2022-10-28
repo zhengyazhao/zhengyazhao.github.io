@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>日志记录 | 日志记录</title><meta name="author" content="zyz"><meta name="copyright" content="zyz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="命名规范方法命名规范  Get：获取单个对象 List：获取多个对象 Count：获取统计值 Insert&#x2F;Save：插入方法 Remove&#x2F;Delete：删除方法 Update：修改方法   代码示例123456789101112131415161718192021222324252627282930&#x2F;&#x2F; 获取单个对象public user GetUser()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日志记录">
+<meta property="og:url" content="http://zhengyazhao.github.io/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="日志记录">
+<meta property="og:description" content="命名规范方法命名规范  Get：获取单个对象 List：获取多个对象 Count：获取统计值 Insert&#x2F;Save：插入方法 Remove&#x2F;Delete：删除方法 Update：修改方法   代码示例123456789101112131415161718192021222324252627282930&#x2F;&#x2F; 获取单个对象public user GetUser()&amp;#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-26T03:24:06.111Z">
+<meta property="article:modified_time" content="2022-10-26T03:57:47.987Z">
+<meta property="article:author" content="zyz">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zhengyazhao.github.io/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '日志记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-26 11:57:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">日志记录</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-26T03:24:06.111Z" title="发表于 2022-10-26 11:24:06">2022-10-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-26T03:57:47.987Z" title="更新于 2022-10-26 11:57:47">2022-10-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h1><h2 id="方法命名规范"><a href="#方法命名规范" class="headerlink" title="方法命名规范"></a>方法命名规范</h2><blockquote>
+<ul>
+<li>Get：获取单个对象</li>
+<li>List：获取多个对象</li>
+<li>Count：获取统计值</li>
+<li>Insert&#x2F;Save：插入方法</li>
+<li>Remove&#x2F;Delete：删除方法</li>
+<li>Update：修改方法</li>
+</ul>
+</blockquote>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 获取单个对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> user <span class="title">GetUser</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> user();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取集合</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">List</span>&lt;<span class="title">user</span>&gt;  <span class="title">ListUser</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> List&lt;user&gt;();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取统计值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">CountUserAge</span>()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 插入</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">InsertUser</span>()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">DeleteUser</span>()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">UpdateUser</span>(<span class="params"><span class="built_in">string</span> id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="接口抽象类命名"><a href="#接口抽象类命名" class="headerlink" title="接口抽象类命名"></a>接口抽象类命名</h2><blockquote>
+<ul>
+<li>I ： 接口开头I命名</li>
+<li>Base： 抽象类结尾</li>
+</ul>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IUserService</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">UserBase</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="实体命名"><a href="#实体命名" class="headerlink" title="实体命名"></a>实体命名</h2><ul>
+<li>Request：控制器（controller）请求参数统一使用Requst结尾</li>
+<li>Command：命令对象以Command结尾</li>
+<li>VO： 返回给页面展示的对象</li>
+<li>DTO：服务之间</li>
+<li>parameter：封装传递参数（方法参数超过3个必须封装）</li>
+<li>领域模型以模型命名无须后缀</li>
+</ul>
+<h3 id="代码示例-1"><a href="#代码示例-1" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">// reuqest</span></span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;users&quot;</span>), HttpPut</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">InsertUser</span>(<span class="params">UserRequest user</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//.....   </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加用户命令</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">InsertUser</span>(<span class="params">AddUserCommand command</span>)</span>&#123;</span><br><span class="line">   <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取单个对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> UserVO <span class="title">GetUser</span>(<span class="params">String id</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取对象集合</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;UserVO&gt; <span class="title">GetUser</span>()</span>&#123;</span><br><span class="line">  <span class="comment">//....</span></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装传递参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AddUserParameter</span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="常量-amp-枚举-amp-变量"><a href="#常量-amp-枚举-amp-变量" class="headerlink" title="常量&amp;枚举&amp;变量"></a>常量&amp;枚举&amp;变量</h2><blockquote>
+<ul>
+<li>所有字母采用大写编写，以下划线分割</li>
+<li>枚举类以<strong>Enum</strong>结尾。</li>
+<li>常量类以Const结尾</li>
+<li>类中变量以下划线开头</li>
+</ul>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//枚举</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserTypeEnum</span>&#123;</span><br><span class="line">    STUDENT=<span class="number">0</span>,</span><br><span class="line">    TEACHER=<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//常量</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserConsts</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> SEX=<span class="string">&quot;男&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//变量</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> _sex=<span class="string">&quot;男&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="其他规范"><a href="#其他规范" class="headerlink" title="其他规范"></a>其他规范</h1><blockquote>
+<ul>
+<li>单个方法不超过50行</li>
+<li>不允许硬编码</li>
+<li>改变过的代码要比修改前更简单</li>
+</ul>
+</blockquote>
+<h1 id="异常分类"><a href="#异常分类" class="headerlink" title="异常分类"></a>异常分类</h1><h1 id="共享词汇表（统一语言表）"><a href="#共享词汇表（统一语言表）" class="headerlink" title="共享词汇表（统一语言表）"></a>共享词汇表（统一语言表）</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://zhengyazhao.github.io">zyz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhengyazhao.github.io/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">http://zhengyazhao.github.io/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhengyazhao.github.io" target="_blank">日志记录</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8-%E5%8F%AF%E4%BB%A5%E5%B7%A5%E4%BD%9C%E7%9A%84%E7%B1%BB(6)/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">代码大全-可以工作的类</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/20/2022-10-20-java-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">java单元测试</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zyz</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/zhengyazhao/"><i class="fab fa-github"></i><span>郑亚招</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">记录日志</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.</span> <span class="toc-text">命名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.1.</span> <span class="toc-text">方法命名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">代码示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%91%BD%E5%90%8D"><span class="toc-number">1.2.</span> <span class="toc-text">接口抽象类命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.</span> <span class="toc-text">实体命名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">代码示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F-amp-%E6%9E%9A%E4%B8%BE-amp-%E5%8F%98%E9%87%8F"><span class="toc-number">1.4.</span> <span class="toc-text">常量&amp;枚举&amp;变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%A7%84%E8%8C%83"><span class="toc-number">2.</span> <span class="toc-text">其他规范</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">异常分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E8%AF%8D%E6%B1%87%E8%A1%A8%EF%BC%88%E7%BB%9F%E4%B8%80%E8%AF%AD%E8%A8%80%E8%A1%A8%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">共享词汇表（统一语言表）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8-%E5%8F%AF%E4%BB%A5%E5%B7%A5%E4%BD%9C%E7%9A%84%E7%B1%BB(6)/" title="代码大全-可以工作的类"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="代码大全-可以工作的类"/></a><div class="content"><a class="title" href="/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8-%E5%8F%AF%E4%BB%A5%E5%B7%A5%E4%BD%9C%E7%9A%84%E7%B1%BB(6)/" title="代码大全-可以工作的类">代码大全-可以工作的类</a><time datetime="2022-10-26T05:23:30.128Z" title="发表于 2022-10-26 13:23:30">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/10/26/2022-10-26-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" title="无题">无题</a><time datetime="2022-10-26T03:24:06.111Z" title="发表于 2022-10-26 11:24:06">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/20/2022-10-20-java-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" title="java单元测试"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java单元测试"/></a><div class="content"><a class="title" href="/2022/10/20/2022-10-20-java-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" title="java单元测试">java单元测试</a><time datetime="2022-10-20T08:37:39.510Z" title="发表于 2022-10-20 16:37:39">2022-10-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/18/2022-10-18-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F(2)/" title="计算机组成原理-存储系统（2）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机组成原理-存储系统（2）"/></a><div class="content"><a class="title" href="/2022/10/18/2022-10-18-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F(2)/" title="计算机组成原理-存储系统（2）">计算机组成原理-存储系统（2）</a><time datetime="2022-10-18T02:21:00.926Z" title="发表于 2022-10-18 10:21:00">2022-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/13/2022-10-13-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%EF%BC%882%EF%BC%89/" title="设计模式-行为型（2）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式-行为型（2）"/></a><div class="content"><a class="title" href="/2022/10/13/2022-10-13-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%EF%BC%882%EF%BC%89/" title="设计模式-行为型（2）">设计模式-行为型（2）</a><time datetime="2022-10-13T02:04:02.024Z" title="发表于 2022-10-13 10:04:02">2022-10-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By zyz</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
