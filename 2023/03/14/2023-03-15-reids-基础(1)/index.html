@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>redis-基础-(1) | 日志记录</title><meta name="author" content="zyz"><meta name="copyright" content="zyz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基础单线程&amp;emsp;&amp;emsp;单线程主要指redis的网络i&#x2F;o和键值对读写。 &amp;emsp;&amp;emsp;持久化、异步删除、集群数据，这些是额外的线程执行。 &amp;emsp;&amp;emsp; 多线程面临共享资源的并发访问控制，会面临资源抢占等问题，并行变串行，吞吐率也没有提高 &amp;emsp;&amp;emsp;redis大部分操作在内存完成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis-基础-(1)">
+<meta property="og:url" content="http://zhengyazhao.github.io/2023/03/14/2023-03-15-reids-%E5%9F%BA%E7%A1%80(1)/index.html">
+<meta property="og:site_name" content="日志记录">
+<meta property="og:description" content="基础单线程&amp;emsp;&amp;emsp;单线程主要指redis的网络i&#x2F;o和键值对读写。 &amp;emsp;&amp;emsp;持久化、异步删除、集群数据，这些是额外的线程执行。 &amp;emsp;&amp;emsp; 多线程面临共享资源的并发访问控制，会面临资源抢占等问题，并行变串行，吞吐率也没有提高 &amp;emsp;&amp;emsp;redis大部分操作在内存完成">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-14T08:11:00.000Z">
+<meta property="article:modified_time" content="2023-03-20T03:44:38.856Z">
+<meta property="article:author" content="zyz">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zhengyazhao.github.io/2023/03/14/2023-03-15-reids-%E5%9F%BA%E7%A1%80(1)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'redis-基础-(1)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-20 11:44:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">日志记录</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">redis-基础-(1)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-14T08:11:00.000Z" title="发表于 2023-03-14 16:11:00">2023-03-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-20T03:44:38.856Z" title="更新于 2023-03-20 11:44:38">2023-03-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/redis/">redis</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="redis-基础-(1)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><p>&amp;emsp;&amp;emsp;单线程主要指redis的<strong>网络i&#x2F;o</strong>和<strong>键值对读写</strong>。<br/></p>
+<p>&amp;emsp;&amp;emsp;<strong>持久化、异步删除、集群数据</strong>，这些是额外的线程执行。<br/></p>
+<p>&amp;emsp;&amp;emsp; 多线程面临共享资源的并发访问控制，会面临资源抢占等问题，并行变串行，吞吐率也没有提高<br/></p>
+<p>&amp;emsp;&amp;emsp;redis大部分操作在内存完成，以及高效的数据解构，还有采用了I&#x2F;O多路复用机制，使其在网络I&#x2F;O能并发处理大量客户端请求<br/></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<ul>
+<li>redis快的原因：在内存操作，高效的数据接口，I&#x2F;O采用多路复用机制</li>
+<li>单线程处理I&#x2F;O瓶颈，任意一个请求在server中一旦发生耗时都影响server的性能<ul>
+<li>操作bigky</li>
+<li>复杂度过高的命令例如 lrang key 0 -1</li>
+<li>大量key集中过期</li>
+<li>淘汰策略</li>
+<li>AOF刷盘开启always机制</li>
+<li>主从全量同步生成RDB</li>
+<li>并发量非常大时</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h1 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h1><h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><h3 id="写回策略"><a href="#写回策略" class="headerlink" title="写回策略"></a>写回策略</h3><blockquote>
+<ul>
+<li>always 同步写回：每个写命令执行完，立马同步将日志写回磁盘</li>
+<li>Everysec 每秒写回：每个写命令执行完，只是把日志写到AOF文件内存缓冲区，每隔一秒把缓冲区内容写入磁盘</li>
+<li>No  操作系统控制的写回：每个写命令执行完，日志写道AOF文件内存缓冲区，操作系统觉得何时将缓冲区内容写回磁盘</li>
+</ul>
+</blockquote>
+<p>&amp;emsp;&amp;emsp;AOF文件越大，就会带来性能问题，文件系统大小有限制如果文件太大往里面追加命令记录的话，效率也会很低，如果发生宕机，AOF记录的命令需要一个个重新执行。<br/></p>
+<p>&amp;emsp;&amp;emsp;基于上述的问题，需要AOF重写机制,来压缩文件。<br/></p>
+<h3 id="AOF重写"><a href="#AOF重写" class="headerlink" title="AOF重写"></a>AOF重写</h3><p>&amp;emsp;&amp;emsp;检查系统当前redis中键值对，记录最终状态，从而实现对某个键值对，重复操作产生的多条记录压缩成一条。<br/><br>AOF日志由主线程写回，<strong>重写过程是由后台线程bgrewriteaof来完成</strong>，避免阻塞主线程。<br/></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fork 采用写时复制机制</span><br><span class="line">   避免一次拷贝大量内存数据给子进程</span><br><span class="line">   fork子进程拷贝必要的数据结构，其中一项就是内存页表</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><blockquote>
+<ul>
+<li>写后执行，保证命令是正确的，避免额外检查开销</li>
+<li>命令执行后记录日志，不会阻塞当前的写操作</li>
+<li>利用AOF重写机制压缩文件大小</li>
+</ul>
+</blockquote>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>&amp;emsp;&amp;emsp;RDB文件是经过压缩的二进制数据，文件很小。<br/></p>
+<blockquote>
+<ul>
+<li>fork一个子进程采用写时复制的方式，在执行快照的同时，正常处理些操作，共享主线程的所有内存数据</li>
+<li>快照时间越短，服务器压力越大，每秒执行一次快照的话<ul>
+<li>全量数据写入磁盘的压力</li>
+<li>fork这个操作会阻塞主进程</li>
+</ul>
+</li>
+<li>可以使用增量快照，但是也会存在额外的开销问题<ul>
+<li>例如10万个key每次都记录变动，也是一笔不小的空间开销</li>
+</ul>
+</li>
+<li>redis4.0增加了混合AOF和内存快照<ul>
+<li>内存快照以一定的频率执行</li>
+<li>在快照之间，使用AOF日志记录这期间的改动</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://zhengyazhao.github.io">zyz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhengyazhao.github.io/2023/03/14/2023-03-15-reids-%E5%9F%BA%E7%A1%80(1)/">http://zhengyazhao.github.io/2023/03/14/2023-03-15-reids-%E5%9F%BA%E7%A1%80(1)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhengyazhao.github.io" target="_blank">日志记录</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/13/2023-03-13-nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%BB%A5%E5%8F%8Ahttp%E6%A8%A1%E5%9D%97/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">nginx-负载均衡以及http模块-3</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zyz</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/zhengyazhao/"><i class="fab fa-github"></i><span>郑亚招</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">记录日志</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">单线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">数据持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF"><span class="toc-number">2.1.</span> <span class="toc-text">AOF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%9B%9E%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">写回策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF%E9%87%8D%E5%86%99"><span class="toc-number">2.1.2.</span> <span class="toc-text">AOF重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">2.1.3.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RDB"><span class="toc-number">2.2.</span> <span class="toc-text">RDB</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/14/2023-03-15-reids-%E5%9F%BA%E7%A1%80(1)/" title="redis-基础-(1)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redis-基础-(1)"/></a><div class="content"><a class="title" href="/2023/03/14/2023-03-15-reids-%E5%9F%BA%E7%A1%80(1)/" title="redis-基础-(1)">redis-基础-(1)</a><time datetime="2023-03-14T08:11:00.000Z" title="发表于 2023-03-14 16:11:00">2023-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/13/2023-03-13-nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%BB%A5%E5%8F%8Ahttp%E6%A8%A1%E5%9D%97/" title="nginx-负载均衡以及http模块-3"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nginx-负载均衡以及http模块-3"/></a><div class="content"><a class="title" href="/2023/03/13/2023-03-13-nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%BB%A5%E5%8F%8Ahttp%E6%A8%A1%E5%9D%97/" title="nginx-负载均衡以及http模块-3">nginx-负载均衡以及http模块-3</a><time datetime="2023-03-13T08:11:00.000Z" title="发表于 2023-03-13 16:11:00">2023-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/09/2023-03-09-nginx-%E6%97%A5%E5%BF%97%E5%AD%98%E5%82%A8/" title="nginx-日志存储-2"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nginx-日志存储-2"/></a><div class="content"><a class="title" href="/2023/03/09/2023-03-09-nginx-%E6%97%A5%E5%BF%97%E5%AD%98%E5%82%A8/" title="nginx-日志存储-2">nginx-日志存储-2</a><time datetime="2023-03-09T08:11:00.000Z" title="发表于 2023-03-09 16:11:00">2023-03-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/08/2023-03-02-nginx-%E5%85%A5%E9%97%A8/" title="nginx-入门-1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nginx-入门-1"/></a><div class="content"><a class="title" href="/2023/03/08/2023-03-02-nginx-%E5%85%A5%E9%97%A8/" title="nginx-入门-1">nginx-入门-1</a><time datetime="2023-03-08T07:04:00.000Z" title="发表于 2023-03-08 15:04:00">2023-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/02/2023-03-02-identityserver4%E9%AA%8C%E8%AF%81token/" title="identityserver4验证token"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="identityserver4验证token"/></a><div class="content"><a class="title" href="/2023/03/02/2023-03-02-identityserver4%E9%AA%8C%E8%AF%81token/" title="identityserver4验证token">identityserver4验证token</a><time datetime="2023-03-02T07:04:00.000Z" title="发表于 2023-03-02 15:04:00">2023-03-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By zyz</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
