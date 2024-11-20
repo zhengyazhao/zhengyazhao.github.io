@@ -48,7 +48,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-07-23 19:14:40'
+  postUpdate: '2024-11-20 14:21:25'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -137,14 +137,143 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">124</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">39</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/backgroud/beijing.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">日志记录</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">日志记录</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/21/2022-03-21-centos-%E9%83%A8%E7%BD%B2skywalking/" title="centos部署skywalking"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="centos部署skywalking"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/21/2022-03-21-centos-%E9%83%A8%E7%BD%B2skywalking/" title="centos部署skywalking">centos部署skywalking</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-21T09:50:00.000Z" title="发表于 2022-03-21 17:50:00">2022-03-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span></div><div class="content">简介&amp;emsp;&amp;emsp;在分布式系统当中,想要监控服务与服务之间调用耗时,或者是查问题的时候,不能像向单机那种形式去查询.查找了一段时间发现目前市场上用的是skywalking,由华为大佬开源的项目。
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">131</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">39</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/backgroud/beijing.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">日志记录</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">日志记录</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/25/2022-08-08-%E9%87%8D%E6%9E%84-%E9%87%8D%E6%9E%84%E4%B8%8E%E6%A8%A1%E5%BC%8F/" title="重构与模式-重构与模式（1）"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重构与模式-重构与模式（1）"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/25/2022-08-08-%E9%87%8D%E6%9E%84-%E9%87%8D%E6%9E%84%E4%B8%8E%E6%A8%A1%E5%BC%8F/" title="重构与模式-重构与模式（1）">重构与模式-重构与模式（1）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-25T09:50:00.000Z" title="发表于 2022-08-25 17:50:00">2022-08-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%87%8D%E6%9E%84/">重构</a></span></div><div class="content">重构&amp;emsp;&amp;emsp;重构应该是持续性的,而不是分阶段，并且分清楚轻重缓急。
+代码坏味道重构的基本条件，以及那些点需要重构
+
+重复性代码
+过长的函数（方法）
+过大的类
+过长参数列
+发散式变化
+一种变化引发多个类的修改
+类里多个方法存在相同的字段，参数
+基本类型偏执
+少用if switch
+为一个类增加一个子类，也必须为另外一个类增加子类
+消除无用的类
+过度的考虑未发生的事情
+令人迷惑的字段例如a&#x3D;1
+过度耦合的消息链
+过度的委托，比如某个方法的计算，改方法把大部分的
+操作都交给中间类完成
+类与类之间的关系应该解耦
+两个类做的事情大致一样，此时需要把这两个类合并
+避免贫血模式
+过多的注释
+
+
+动机
+使新代码的增加更容易
+改善现有代码的设计
+对代码理解更透彻
+提高编程的趣味性
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/21/2022-08-01-%E4%BB%A3%E7%A0%81-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="代码整洁之道"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="代码整洁之道"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/21/2022-08-01-%E4%BB%A3%E7%A0%81-%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="代码整洁之道">代码整洁之道</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-21T09:50:00.000Z" title="发表于 2022-07-21 17:50:00">2022-07-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%BB%A3%E7%A0%81/">代码</a></span></div><div class="content">命名
+避免命名出现误导，做有意义的区分
+使用读的出来的名称
+每个概念对应一个词
+使用可搜索的名称
+使用领域中通用语言
+
+函数
+使用描述性的名称，不用担心名字长
+函数参数不要超过2个
+如果函数参数需要3个或3个以上参数，说明其中一些参数应该封装成类
+使用异常代替返回错误码，错误处理代码就能从主路径代码分离
+开始随意写 -&gt; 单元测试覆盖每行代码 -&gt; 分解函数、修改名称、消除重复 -&gt; 保持测试通过 -&gt; 优秀的函数
+不要重复
+try&#x2F;catch代码丑陋
+使用异常代替返回错误码
+分隔指令与询问
+修改状态和验证应该单独写方法，保证单一职责
+函数不超过100行，20行封顶最佳，并且注意格式和缩进
+
+
+switch语句
+确保每个switch都在较低的抽象层次，而且永远不重复
+
+
+
+switch问题1234567891011121314public Money calculatePay(Employee e)&#123;  switch(e.type)  &#123;      case COMMISSONED:        return  calculate ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/04/02/2022-04-02-linux%E9%83%A8%E7%BD%B2k8s/" title="linux部署k8s"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux部署k8s"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/02/2022-04-02-linux%E9%83%A8%E7%BD%B2k8s/" title="linux部署k8s">linux部署k8s</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-02T09:50:00.000Z" title="发表于 2022-04-02 17:50:00">2022-04-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/k8s/">k8s</a></span></div><div class="content">基础配置内部环境关闭防火墙
+正式环境开通需要用到的端口号
+例外建议在主机上禁用SELinux,让容器可以读取主机文件系统
+sudo swapoff -a
+使用kubeadm工具快速安装K8s集群配置yum源。地址&#x2F;etc&#x2F;yum.repos.d&#x2F;kubernetes.repo的内容如下
+cat &lt; &#x2F;etc&#x2F;yum.repos.d&#x2F;kubernetes.repo
+[kubernetes]
+name&#x3D;Kubernetes
+baseurl&#x3D;http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled&#x3D;1
+gpgcheck&#x3D;0
+repo_gpgcheck&#x3D;0
+gpgkey&#x3D;http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+​      http://mirrors.aliyun.com/kubernetes/yum ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/24/2022-03-24-netcore%E6%B7%BB%E5%8A%A0skywalking-apm%E6%8E%A2%E9%92%88/" title="netcore添加skywalking-apm探针"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="netcore添加skywalking-apm探针"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/24/2022-03-24-netcore%E6%B7%BB%E5%8A%A0skywalking-apm%E6%8E%A2%E9%92%88/" title="netcore添加skywalking-apm探针">netcore添加skywalking-apm探针</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-24T07:04:00.000Z" title="发表于 2022-03-24 15:04:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span></div><div class="content">netcore添加skywalking&amp;emsp;&amp;emsp;新建netcore(skywalking apm 仅支持netcore3.1 以上版本)项目,找到项目文件路径中的Properties&#x2F;kaybcgSettings.json 
+123456789101112131415161718192021222324252627282930313233&#123;  &quot;$schema&quot;: &quot;http://json.schemastore.org/launchsettings.json&quot;,  &quot;iisSettings&quot;: &#123;    &quot;windowsAuthentication&quot;: false,    &quot;anonymousAuthentication&quot;: true,    &quot;iisExpress&quot;: &#123;      &quot;applicationUrl&quot;: &quot;http://localhost:57258& ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/24/2022-03-24-spring-boot%E6%B7%BB%E5%8A%A0%E6%8E%A2%E9%92%88/" title="spring-boot添加探针"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring-boot添加探针"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/24/2022-03-24-spring-boot%E6%B7%BB%E5%8A%A0%E6%8E%A2%E9%92%88/" title="spring-boot添加探针">spring-boot添加探针</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-24T07:04:00.000Z" title="发表于 2022-03-24 15:04:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span></div><div class="content">环境
+spring-boot
+skywalking-agent 8.7.0
+
+1.下载skywalking安装包从skywalking官网下载安装包，下载完安装包之后里面在java的运行参数添加运行参数:
+1-javaagent:F:/tools/test/apache-skywalking-apm-bin-es7/agent/skywalking-agent.jar
+
+
+
+添加环境变量，之后运行即可
+12345SW_AGENT_NAME=thesis;SW_AGENT_COLLECTOR_BACKEND_SERVICES=39.105.139.93:11800# SW_AGENT_NAME 服务名称# SW_AGENT_COLLECTOR_BACKEND_SERVICES oap服务地址# 11800 rpc端口号
+
+
+
+配置完成之后的图片如下:
+
+logback日志集成到skywalking中展示&amp;emsp;&amp;emsp;在skywalking8.4.0以上的版本当中支持展示日志，所以把日志内容也集成到skywalking当中了。
+&amp;emsp;&amp;ems ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/24/2022-03-24-ddd-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" title="DDD-上下文关系映射"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DDD-上下文关系映射"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/24/2022-03-24-ddd-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/" title="DDD-上下文关系映射">DDD-上下文关系映射</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-24T07:04:00.000Z" title="发表于 2022-03-24 15:04:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ddd/">ddd</a></span></div><div class="content">上下文之间的关系
+防腐层（ANTICORRUPTION LAYER）
+新系统与另一个系统对接，为了克服两个模型的不同
+新系统从老系统获取数据，为了避免破坏数据库，需要转换成新系统模型对应的数据
+
+
+共享内核(SHARED KERNEL)
+两个上下文依赖部分共享的模型
+
+
+开发宿主服务（OPEN HOST SERVICE）
+子系统与大量其他系统集成时，提供一个统一的协议，供所有子系统使用
+当有新的集成需求，就增强并扩展这个协议
+
+
+分道扬镳（SEPARATE WAY）
+不需要集成一起
+
+
+合作关系
+两个上下文紧密合作的关系，一荣俱荣，一损俱损。
+
+
+上下游关系
+客户&#x2F;供应商  (CUSTOMER&#x2F;SUPPLIER DEVELOPMENT TEAM)
+遵从者(CONFORMIST)
+
+
+
+2.分析模型和代码模型的区别3.应用DDD的原则
+​	1.理解业务愿景
+ 捕获所需的行为
+ 质疑假设
+ 持续建模
+ 不存在错误的模型
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/24/2022-03-24-jenkins/" title="jenkins"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="jenkins"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/24/2022-03-24-jenkins/" title="jenkins">jenkins</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-24T07:04:00.000Z" title="发表于 2022-03-24 15:04:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/jenkins/">jenkins</a></span></div><div class="content">jenkins安装&amp;emsp;&amp;emsp;jenkins安装的时候部署到了linux系统上，因为需要打包镜像、以及执行一些其他命令，如果是容器部署的话，还需要再容器内安装一些工具，索性直接部署到Linux上。
+&amp;emsp;&amp;emsp;部署到linux系统上端口号、用户名等信息还需要一些初始化的动作，不然无法使用系统的命令，可以给jenkins用户授权，或者干脆把用户换成root.
+12345vim /etc/init.d/jenkinsvim /etc/sysconfig/jenkinsvim /usr/lib/systemd/system/jenkins.service
+sonarqube（静态代码分析）&amp;emsp;&amp;emsp;静态代码检查工具，用户管理代码质量，帮助发现bug，漏洞等信息。
+&amp;emsp;&amp;emsp;扫描程序 .NET Core 全局工具&amp;emsp;&amp;emsp;作为先决条件，您需要使用以下命令全局安装声纳扫描仪工具：
+dotnet tool install --global dotnet- ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/21/2022-03-21-centos-%E9%83%A8%E7%BD%B2skywalking/" title="centos部署skywalking"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="centos部署skywalking"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/21/2022-03-21-centos-%E9%83%A8%E7%BD%B2skywalking/" title="centos部署skywalking">centos部署skywalking</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-21T09:50:00.000Z" title="发表于 2022-03-21 17:50:00">2022-03-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span></div><div class="content">简介&amp;emsp;&amp;emsp;在分布式系统当中,想要监控服务与服务之间调用耗时,或者是查问题的时候,不能像向单机那种形式去查询.查找了一段时间发现目前市场上用的是skywalking,由华为大佬开源的项目。
 摘自skywalking简介:一个开放源代码的可观察性平台，用于收集，分析，聚合和可视化来自服务和云本机基础结构的数据&amp;emsp;&amp;emsp;SkyWalking为服务，服务实例，端点提供可观察性功能。服务，实例和端点这两个术语在今天到处都有使用，因此值得在SkyWalking的上下文中定义它们的特定含义
 
 服务:表示一组&#x2F;一组工作负载，这些工作负载为传入请求提供相同的行为。您可以在使用乐器代理或SDK时定义服务名称。SkyWalking也可以使用您在Istio等平台中定义的名称。
 服务实例：服务组中的每个单独工作负载都称为实例。像pods在Kubernetes中一样，它不必是单个OS进程，但是，如果您使用仪器代理，则实例实际上是一个真正的OS进程。
 端点：服务中用于传入请求的路径，例如HTTP URI路径或gRPC服务类+方法签名。
 
-&a ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/06/2022-03-08-redis-bitmap%E8%8E%B7%E5%8F%96get%E4%B9%B1%E7%A0%81/" title="bitmap获取get乱码"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="bitmap获取get乱码"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/06/2022-03-08-redis-bitmap%E8%8E%B7%E5%8F%96get%E4%B9%B1%E7%A0%81/" title="bitmap获取get乱码">bitmap获取get乱码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-06T09:50:00.000Z" title="发表于 2022-03-06 17:50:00">2022-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/redis/">redis</a></span></div><div class="content">业务场景&amp;emsp;需要记录学生听课记录时间精确到秒，在讨论过程中采用了redis的bitmap存储学员听课记录。利用bitmap的结构存储学员的听课记录，例如一个视频的大小为1小时，拆解下来就是60分钟，拆成秒的话是3600秒，对应创建一个长度为3600的bitmap结构存储听课记录，客户端时时上报。并且也能检测到学员哪一秒看了
+&a ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/06/2022-03-08-redis-bitmap%E8%8E%B7%E5%8F%96get%E4%B9%B1%E7%A0%81/" title="bitmap获取get乱码"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="bitmap获取get乱码"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/06/2022-03-08-redis-bitmap%E8%8E%B7%E5%8F%96get%E4%B9%B1%E7%A0%81/" title="bitmap获取get乱码">bitmap获取get乱码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-06T09:50:00.000Z" title="发表于 2022-03-06 17:50:00">2022-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/redis/">redis</a></span></div><div class="content">业务场景&amp;emsp;需要记录学生听课记录时间精确到秒，在讨论过程中采用了redis的bitmap存储学员听课记录。利用bitmap的结构存储学员的听课记录，例如一个视频的大小为1小时，拆解下来就是60分钟，拆成秒的话是3600秒，对应创建一个长度为3600的bitmap结构存储听课记录，客户端时时上报。并且也能检测到学员哪一秒看了
 问题描述&amp;emsp;&amp;emsp;问题是在持久化学员听课记录的时候，如果是获取bitmap结构的话，无法获取到整体结构,导致无法持久化到数据库当中。
 redis中通过get获取bitmap的话，redis将二进制数据打包成16进制返回。
 排查过程 &amp;emsp; &amp;emsp;首次排查的时候先在redis当中添加bitmap,设置第0位为1.
@@ -175,7 +304,7 @@ redis中通过get获取bitmap的话，redis将二进制数据打包成16进制�
 0
 
 
-&amp;emsp;&amp;emsp;在用get获取的时候结果显 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/05/2022-03-05-DDD-%E4%B8%BB%E5%AE%A2%E4%BD%93%E6%80%9D%E7%BB%B4/" title="DDD-利用主客体建立多对多建模"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DDD-利用主客体建立多对多建模"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/05/2022-03-05-DDD-%E4%B8%BB%E5%AE%A2%E4%BD%93%E6%80%9D%E7%BB%B4/" title="DDD-利用主客体建立多对多建模">DDD-利用主客体建立多对多建模</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-05T09:50:00.000Z" title="发表于 2022-03-05 17:50:00">2022-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ddd/">ddd</a></span></div><div class="content">利用主客体建立多对多建模  在了解领域驱动的时候，《领域驱动设计：软件核心复杂性应对之道》书中会有大量的概念，战略设计、战术设计等等。但是在实际应用的时候，却不知道应该如何进行下去。
+&amp;emsp;&amp;emsp;在用get获取的时候结果显 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/05/2022-03-05-DDD-%E4%B8%BB%E5%AE%A2%E4%BD%93%E6%80%9D%E7%BB%B4/" title="DDD-利用主客体建立多对多建模"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DDD-利用主客体建立多对多建模"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/05/2022-03-05-DDD-%E4%B8%BB%E5%AE%A2%E4%BD%93%E6%80%9D%E7%BB%B4/" title="DDD-利用主客体建立多对多建模">DDD-利用主客体建立多对多建模</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-05T09:50:00.000Z" title="发表于 2022-03-05 17:50:00">2022-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ddd/">ddd</a></span></div><div class="content">利用主客体建立多对多建模  在了解领域驱动的时候，《领域驱动设计：软件核心复杂性应对之道》书中会有大量的概念，战略设计、战术设计等等。但是在实际应用的时候，却不知道应该如何进行下去。
 我的理解领域建模的过程也就是面向对象建模的过程,面向对象也是对现实业务的一种抽象。在我的实践过程中采用了主客体建模的方式来完成。
 主体、客体在哲学中的定义是什么呢？按照主流的哲学教科书，可以看到类似下面的描述：
 
@@ -187,110 +316,7 @@ redis中通过get获取bitmap的话，redis将二进制数据打包成16进制�
 
 这种建模方式是我之前常用的一些方式，但是上面的建模方式会发现没有体现面向对象设计的思想，也就是我们常说的贫血模式。
 在编写代码的时候也是如下方式。
-123456789101112131415161718public  class Customer()&#123;    public int ID&#123;g ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/02/25/2022-02-25-k8s-%E5%85%A5%E9%97%A8/" title="k8s-入门"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s-入门"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/25/2022-02-25-k8s-%E5%85%A5%E9%97%A8/" title="k8s-入门">k8s-入门</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-25T09:50:00.000Z" title="发表于 2022-02-25 17:50:00">2022-02-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/k8s/">k8s</a></span></div><div class="content">为什么使用k8s&amp;emsp;&amp;emsp;为什么要使用k8s？
-
-弹性扩容
-可以快速的实现容器扩容
-
-
-负载均衡
-k8s内部通过nginx组件实现负载均衡
-
-
-资源调度
-当node节点上的CPU、内存不够用时，可以扩充node节点，新建的pod就会被调度器调度到新节点
-
-
-RBAC安全
-不同角色有不同权限、删除pod查看pod等
-
-
-故障迁移
-当某一个node节点关闭，node节点上的服务自动转移到另一个node
-
-
-资源隔离
-可以利用命名空间隔离不同的环境，各个命名空间互不干扰
-
-
-
-和docker 有什么关系&amp;emsp;&amp;emsp;k8s是资源调度平台，属于一种集成了多种技术的平台，运行的任务是基于docker容器   
-k8s简介&amp;emsp;&amp;emsp;k8s集群分为两部分，一部分为控制平面，还要一部分是工作节点，另外还有一些附加组件。
-&amp;emsp;&amp;emsp;控制平面的组件包含如下:
-
-etcd分布式存储
-存储了集群状态、pod、rc服务和私密凭据
-
-
-api服务器
-restful提供可查询、修改集群状态的接口
-
-
- ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/02/17/2022-02-10-%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81%E4%BB%A5%E5%8F%8A%E6%8E%88%E6%9D%83/" title="登录认证以及授权"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="登录认证以及授权"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/17/2022-02-10-%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81%E4%BB%A5%E5%8F%8A%E6%8E%88%E6%9D%83/" title="登录认证以及授权">登录认证以及授权</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-17T09:50:00.000Z" title="发表于 2022-02-17 17:50:00">2022-02-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/oauth/">oauth</a></span></div><div class="content">账号密码登录&amp;emsp;&amp;emsp;传统的认证方式，使用账号、密码登录.
-&amp;emsp;&amp;emsp;账号密码规则使用各式各样的验证方式来校验
-jwt&amp;emsp;&amp;emsp;基于json格式的安全传输信息的标准，在 用户和服务器之间进行身份验证和授权的一种方式，由以下三个部分组成，并使用base64编码。
-1234头部（heder）：包含加密算法和类型信息负载（payload）：用户数据和其他自定义数据签名（signature）：验证负载的完整性和真实性
-
-认证流程
-
-用户提供用户名和密码进行登录
-服务器验证用户的身份并生成一个jwt
-服务器将jwt发送给客户端，并存储jwt以供将来的请求使用
-客户端存储jwt，并在将来的请求中发送给服务器
-服务器验证有效性，并根据负载的信息对请求授权
-
-
-优点
-
-无状态：避免在服务器端存储会话信息
-可扩展性：开发者根据自己的需要在payload添加额外信息
-安全性：通过签名保证了信息完整性和真实性，同时也支持加密以保证机密性
-跨平台：基于json格式，可以在多种语言交换和传递
-
-
-缺点
-
-jwt存储客户端， ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/02/17/2022-02-17-k8s-%E4%BD%BF%E7%94%A8nfs%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6/" title="k8s-使用nfs挂载文件"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s-使用nfs挂载文件"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/17/2022-02-17-k8s-%E4%BD%BF%E7%94%A8nfs%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6/" title="k8s-使用nfs挂载文件">k8s-使用nfs挂载文件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-17T09:50:00.000Z" title="发表于 2022-02-17 17:50:00">2022-02-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/k8s/">k8s</a></span></div><div class="content">简介&amp;emsp;&amp;emsp;持久卷是集群中的一块存储
-配置配置nfs共享目录1234567891.yum -y install nfs-utils  2.vim /etc/exports   2.1 /data *(rw,sync,no_root_squash)3.mkdir /data4.systemctl start rpcbind5. systemctl enable rpcbind6.systemctl start nfs7.systemctl enable nfs-server8.showmount -e  服务器ip
-
-
-
-配置k8s123456789101112131415161718192021222324252627282930apiVersion: v1kind: PersistentVolumemetadata:  name: nfsspec:  capacity:    storage: 50Mi  accessModes:    - ReadWriteMany  nfs:    #server: nfs-server.default.svc.c ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/02/17/2022-02-17-k8s-%E9%85%8D%E7%BD%AEingressController/" title="k8s-配置ingressController"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s-配置ingressController"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/17/2022-02-17-k8s-%E9%85%8D%E7%BD%AEingressController/" title="k8s-配置ingressController">k8s-配置ingressController</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-17T09:50:00.000Z" title="发表于 2022-02-17 17:50:00">2022-02-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/k8s/">k8s</a></span></div><div class="content">简介&amp;emsp;&amp;emsp;ingress简单来说就是一个负载均衡，因为pod是动态分配在不同的node节点上，如果是手动配置的话，无法确定ip地址，并且如果是新增节点工作量较大，所以客户端先请求ingress转发到service然后再到最终的pod
-安装ingressController&amp;emsp;&amp;emsp;从github下载deploy.yaml文件，需要把其中获取镜像的地址改为国内的地址,不然容易获取不到镜像
-12341.ingress-nginx-controller的image地址改为:  registry.cn-hangzhou.aliyuncs.com/google_containers/nginx-ingress-controller:v1.1.12.ingress-nginx-admission-create的image地址改为:  registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
-
-
-
-&amp;emsp;&amp;emsp ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/02/17/2022-02-17-k8s-%E9%85%8D%E7%BD%AEstorageClass/" title="k8s-配置StorageClass"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="k8s-配置StorageClass"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/17/2022-02-17-k8s-%E9%85%8D%E7%BD%AEstorageClass/" title="k8s-配置StorageClass">k8s-配置StorageClass</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-17T09:50:00.000Z" title="发表于 2022-02-17 17:50:00">2022-02-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/k8s/">k8s</a></span></div><div class="content">简介&amp;emsp;&amp;emsp;持久化配置如果是采用pvc的话，需要手动匹配pv，这种场景的话在服务比较多的话，创建起来比较麻烦，所以采用了动态数据卷的形式。
-配置nfs服务器1234567891.yum -y install nfs-utils  2.vim /etc/exports   2.1 /data *(rw,sync,no_root_squash)3.mkdir /data4.systemctl start rpcbind5. systemctl enable rpcbind6.systemctl start nfs7.systemctl enable nfs-server8.showmount -e  服务器ip
-
-
-
-基础配置&amp;emsp;&amp;emsp;1.23版本需要先配置k8s-apiserver当中添加如下命令
-12345vim /etc/kubernetes/manifests/kube-apiserver.yaml 添加如下命令- --feature-gates=RemoveSelfLink=false# 应用配置kubectl app ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/01/25/2020-01-25-centos-%E5%AE%89%E8%A3%85postgresql/" title="centos-安装postgresql"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="centos-安装postgresql"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/25/2020-01-25-centos-%E5%AE%89%E8%A3%85postgresql/" title="centos-安装postgresql">centos-安装postgresql</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-25T09:50:00.000Z" title="发表于 2022-01-25 17:50:00">2022-01-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/database/">database</a></span></div><div class="content">单机安装下载rpm包&amp;emsp;&amp;emsp;可以选择其他方式下载安装包，本次安装采用的是rpm包安装。
-1sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-
-安装pgsql123yum install postgresql10 -y  yum install -y postgresql10-serversystemctl restart postgresql-10  
-
-设置自动启动123sudo /usr/pgsql-10/bin/postgresql-10-setup initdbsudo systemctl enable postgresql-10sudo systemctl start postgresql-10
-
-修改密码1234//登录sudo -u postgres psql//修改密码ALTER USER postgres WITH PASSWORD &#x27; ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/01/25/2022-01-22-centos-%E5%AE%89%E8%A3%85mysql/" title="centos-安装mysql"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="centos-安装mysql"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/25/2022-01-22-centos-%E5%AE%89%E8%A3%85mysql/" title="centos-安装mysql">centos-安装mysql</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-25T09:50:00.000Z" title="发表于 2022-01-25 17:50:00">2022-01-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span></div><div class="content">下载安装包 1wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
-
-安装mysql包 1yum -y install mysql57-community-release-el7-10.noarch.rpm
-
-
-
-安装mysql  1yum -y install mysql-community-server
-
-启用mysql1sudo service mysqld start
-
-查看临时密码 1sudo grep &#x27;temporary password&#x27; /var/log/mysqld.log
-
-进入mysql1mysql -u root -p
-
-修改密码 1ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;Yswx123456!&#x27;;
-
-修改远程登陆 1GRANT ALL PRIVILEGES on *.* to &#x27;root&#x27;@&#x27;%& ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/11/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#content-inner">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#content-inner">13</a><a class="extend next" rel="next" href="/page/13/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zyz</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">124</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">39</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/zhengyazhao/"><i class="fab fa-github"></i><span>郑亚招</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">记录日志</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/14/2024/2024-07-14-%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE-%E9%81%97%E7%95%99%E7%B3%BB%E7%BB%9F%E6%94%B9%E9%80%A0/" title="遗留系统改造"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="遗留系统改造"/></a><div class="content"><a class="title" href="/2024/07/14/2024/2024-07-14-%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE-%E9%81%97%E7%95%99%E7%B3%BB%E7%BB%9F%E6%94%B9%E9%80%A0/" title="遗留系统改造">遗留系统改造</a><time datetime="2024-07-13T16:00:00.000Z" title="发表于 2024-07-14 00:00:00">2024-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/23/2024/2024-06-23-%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="什么是微服务？"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="什么是微服务？"/></a><div class="content"><a class="title" href="/2024/06/23/2024/2024-06-23-%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="什么是微服务？">什么是微服务？</a><time datetime="2024-06-22T16:00:00.000Z" title="发表于 2024-06-23 00:00:00">2024-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/01/2024/2024-06-01-%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE-%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86%E5%92%8C%E8%AE%A8%E8%AE%BA/" title="问题收集和原领匠的问题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="问题收集和原领匠的问题"/></a><div class="content"><a class="title" href="/2024/06/01/2024/2024-06-01-%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE-%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86%E5%92%8C%E8%AE%A8%E8%AE%BA/" title="问题收集和原领匠的问题">问题收集和原领匠的问题</a><time datetime="2024-05-31T16:00:00.000Z" title="发表于 2024-06-01 00:00:00">2024-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/17/2024/2024-05-17-%E9%9C%80%E6%B1%82%E8%AE%A1%E5%88%92%E4%BC%9A%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E9%97%AE%E9%A2%98/" title="需求计划会时间过长问题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="需求计划会时间过长问题"/></a><div class="content"><a class="title" href="/2024/05/17/2024/2024-05-17-%E9%9C%80%E6%B1%82%E8%AE%A1%E5%88%92%E4%BC%9A%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E9%97%AE%E9%A2%98/" title="需求计划会时间过长问题">需求计划会时间过长问题</a><time datetime="2024-05-16T16:00:00.000Z" title="发表于 2024-05-17 00:00:00">2024-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/09/2024/2024-05-09-dotnet%E6%B7%BB%E5%8A%A0nuget%E4%BB%93%E5%BA%93/" title="添加自己的nuget"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="添加自己的nuget"/></a><div class="content"><a class="title" href="/2024/05/09/2024/2024-05-09-dotnet%E6%B7%BB%E5%8A%A0nuget%E4%BB%93%E5%BA%93/" title="添加自己的nuget">添加自己的nuget</a><time datetime="2024-05-08T16:00:00.000Z" title="发表于 2024-05-09 00:00:00">2024-05-09</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+123456789101112131415161718public  class Customer()&#123;    public int ID&#123;g ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/11/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#content-inner">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#content-inner">13</a><a class="page-number" href="/page/14/#content-inner">14</a><a class="extend next" rel="next" href="/page/13/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zyz</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">131</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">39</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/zhengyazhao/"><i class="fab fa-github"></i><span>郑亚招</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">记录日志</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/19/%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE/2024-11-19-%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" title="人人都是产品经理"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人人都是产品经理"/></a><div class="content"><a class="title" href="/2024/11/19/%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE/2024-11-19-%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" title="人人都是产品经理">人人都是产品经理</a><time datetime="2024-11-18T16:00:00.000Z" title="发表于 2024-11-19 00:00:00">2024-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/18/%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE/2024-11-18-%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/" title="曾国藩传"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="曾国藩传"/></a><div class="content"><a class="title" href="/2024/11/18/%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE/2024-11-18-%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/" title="曾国藩传">曾国藩传</a><time datetime="2024-11-17T16:00:00.000Z" title="发表于 2024-11-18 00:00:00">2024-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/11/2024/2024-11-11-nuget%E5%8C%85%E7%BC%93%E5%AD%98%E5%AF%BC%E8%87%B4%E6%97%A0%E6%B3%95%E7%BC%96%E8%AF%91/" title="nuget包缓存导致无法编译"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nuget包缓存导致无法编译"/></a><div class="content"><a class="title" href="/2024/11/11/2024/2024-11-11-nuget%E5%8C%85%E7%BC%93%E5%AD%98%E5%AF%BC%E8%87%B4%E6%97%A0%E6%B3%95%E7%BC%96%E8%AF%91/" title="nuget包缓存导致无法编译">nuget包缓存导致无法编译</a><time datetime="2024-11-10T16:00:00.000Z" title="发表于 2024-11-11 00:00:00">2024-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/11/2024/2024-10-11-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="linux常用命令"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux常用命令"/></a><div class="content"><a class="title" href="/2024/10/11/2024/2024-10-11-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="linux常用命令">linux常用命令</a><time datetime="2024-10-10T16:00:00.000Z" title="发表于 2024-10-11 00:00:00">2024-10-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/03/2024/2024-09-03-centos%E5%8D%B8%E8%BD%BDclash/" title="centos7.9卸载clash"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="centos7.9卸载clash"/></a><div class="content"><a class="title" href="/2024/09/03/2024/2024-09-03-centos%E5%8D%B8%E8%BD%BDclash/" title="centos7.9卸载clash">centos7.9卸载clash</a><time datetime="2024-09-02T16:00:00.000Z" title="发表于 2024-09-03 00:00:00">2024-09-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
@@ -298,5 +324,5 @@ jwt存储客户端， ...</div></div></div><div class="recent-post-item"><div cl
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/DDD/"><span class="card-category-list-name">DDD</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JAVA/"><span class="card-category-list-name">JAVA</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/TDD/"><span class="card-category-list-name">TDD</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/apollo/"><span class="card-category-list-name">apollo</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/centos/"><span class="card-category-list-name">centos</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/chatgpt/"><span class="card-category-list-name">chatgpt</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/database/"><span class="card-category-list-name">database</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ddd/"><span class="card-category-list-name">ddd</span><span class="card-category-list-count">2</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/apollo/" style="font-size: 1.1em; color: #999">apollo</a> <a href="/tags/centos/" style="font-size: 1.1em; color: #999">centos</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/kafka/" style="font-size: 1.1em; color: #999">kafka</a> <a href="/tags/linux/" style="font-size: 1.3em; color: #99a1ac">linux</a> <a href="/tags/mysql/" style="font-size: 1.1em; color: #999">mysql</a> <a href="/tags/net/" style="font-size: 1.1em; color: #999">net</a> <a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">学习</a> <a href="/tags/%E6%95%8F%E6%8D%B7/" style="font-size: 1.1em; color: #999">敏捷</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">数据库</a> <a href="/tags/%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE/" style="font-size: 1.3em; color: #99a1ac">每周会议</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">计算机原理</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">16</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">6</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">124</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-23T11:14:40.481Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By zyz</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/apollo/" style="font-size: 1.1em; color: #999">apollo</a> <a href="/tags/centos/" style="font-size: 1.1em; color: #999">centos</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/k8s/" style="font-size: 1.1em; color: #999">k8s</a> <a href="/tags/kafka/" style="font-size: 1.1em; color: #999">kafka</a> <a href="/tags/linux/" style="font-size: 1.37em; color: #99a4b2">linux</a> <a href="/tags/mysql/" style="font-size: 1.1em; color: #999">mysql</a> <a href="/tags/net/" style="font-size: 1.1em; color: #999">net</a> <a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">学习</a> <a href="/tags/%E6%95%8F%E6%8D%B7/" style="font-size: 1.23em; color: #999ea6">敏捷</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">数据库</a> <a href="/tags/%E6%AF%8F%E5%91%A8%E4%BC%9A%E8%AE%AE/" style="font-size: 1.23em; color: #999ea6">每周会议</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">计算机原理</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">131</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-20T06:21:25.466Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By zyz</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
