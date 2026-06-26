@@ -5631,3 +5631,140 @@ blockquote.pullquote.right {
 .read-mode #article-container .note .note-icon {
   color: var(--font-color);
 }
+
+/* ===================================================================
+   简约黑白皮肤 —— 覆盖 Butterfly，纯白底/黑灰字/单栏/零彩色
+   =================================================================== */
+:root{
+  --sk-bg:#ffffff; --sk-text:#2b2b2b; --sk-sub:#9a9a9a; --sk-line:#ececec;
+  --sk-link:#1a1a1a; --sk-soft:#fafafa;
+}
+html[data-theme],html,body{
+  background:var(--sk-bg)!important; color:var(--sk-text)!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif!important;
+}
+
+/* ---- 去掉花哨元素 ---- */
+#ribbon,canvas#ribbon{display:none!important;}
+#aside-content{display:none!important;}
+#scroll-down{display:none!important;}
+.recent-post-item .post_cover,.post_cover.left,.post_cover{display:none!important;}
+.recent-posts .recent-post-item:hover{transform:none!important;}
+*{box-shadow:none!important;text-shadow:none!important;}
+
+/* ---- 顶部 header：白底、低高度、黑标题、无背景图、给 absolute nav 留 60px ---- */
+#page-header,#page-header.post-bg,#page-header.full_page,#page-header.not-top-img{
+  height:auto!important;min-height:0!important;padding-top:60px!important;
+  background:#fff!important;background-image:none!important;
+}
+#page-header::before{display:none!important;}
+#site-info{display:none!important;}
+.recent-posts{padding-top:20px!important;}
+#page-header:not(.post-bg){min-height:0!important;height:60px!important;}
+#site-title,#site-subtitle{color:#1a1a1a!important;font-weight:600!important;}
+#site-title{font-size:1.8em!important;}
+#post-info{position:static!important;max-width:740px!important;margin:0 auto!important;padding:24px 22px 18px!important;text-align:left!important;box-sizing:border-box!important;}
+#post-info .post-title{color:#1a1a1a!important;font-size:1.7em!important;}
+#post-meta,#post-meta a,#post-meta .post-meta-icon{color:var(--sk-sub)!important;}
+
+/* ---- 顶部导航栏：白底黑字、细底线 ---- */
+#nav,#nav.show{background:#fff!important;border-bottom:1px solid var(--sk-line)!important;}
+#nav #site-name,#nav a,#nav .site-page,#nav #blog_name a{color:#333!important;}
+
+/* ---- 布局：单栏、居中、限宽 ---- */
+.layout{display:block!important;max-width:740px!important;margin:0 auto!important;padding:0 22px!important;}
+.layout>#post,.layout>div:first-child,#recent-posts,#post{width:100%!important;margin:0!important;}
+#content-inner,.layout{background:transparent!important;}
+#post,.recent-posts,.card-widget{background:transparent!important;border:none!important;border-radius:0!important;padding:0!important;}
+
+/* ---- 首页文章卡片 → 极简列表 ---- */
+.recent-post-item{
+  display:block!important;height:auto!important;width:100%!important;
+  background:transparent!important;border:0!important;border-bottom:1px solid var(--sk-line)!important;
+  border-radius:0!important;margin:0!important;padding:26px 0!important;
+}
+.recent-post-info{padding:0!important;width:100%!important;}
+.recent-post-item .article-title{
+  color:#1a1a1a!important;font-size:1.32em!important;font-weight:600!important;line-height:1.4;
+  -webkit-line-clamp:unset!important;
+}
+.recent-post-item .article-title:hover{color:#000!important;}
+.recent-post-item .content{color:#777!important;font-size:.92em!important;line-height:1.7;margin-top:10px!important;}
+.article-meta-wrap,.article-meta-wrap a,.article-meta-wrap i{color:var(--sk-sub)!important;font-size:.84em!important;}
+.recent-posts .article-meta-wrap{margin-top:8px!important;}
+
+/* ---- 正文排版 ---- */
+#article-container,.post-content{color:#2b2b2b!important;font-size:1.05em!important;line-height:1.95!important;}
+#article-container h1,#article-container h2,#article-container h3,#article-container h4{
+  color:#161616!important;font-weight:600!important;border:none!important;margin:1.4em 0 .6em!important;
+}
+#article-container h1{font-size:1.5em!important;}
+#article-container h2{font-size:1.3em!important;border-bottom:1px solid var(--sk-line)!important;padding-bottom:.3em!important;}
+#article-container h3{font-size:1.13em!important;}
+#article-container a{color:#1a1a1a!important;text-decoration:underline!important;text-decoration-color:#bbb!important;}
+#article-container a:hover{text-decoration-color:#1a1a1a!important;}
+#article-container blockquote{border-left:3px solid #ddd!important;background:var(--sk-soft)!important;color:#555!important;padding:.6em 1em!important;}
+#article-container pre{background:#f6f6f6!important;border:1px solid #eee!important;border-radius:4px!important;}
+#article-container :not(pre)>code{background:#f2f2f2!important;color:#c7254e!important;border-radius:3px!important;padding:.1em .35em!important;}
+#article-container table{border-collapse:collapse!important;}
+#article-container th,#article-container td{border:1px solid #e2e2e2!important;padding:.5em .8em!important;}
+#article-container th{background:var(--sk-soft)!important;}
+#article-container img{border-radius:0!important;}
+#article-container hr{border:0!important;border-top:1px solid var(--sk-line)!important;}
+
+/* ---- 文章页底部 版权/标签/翻页 ---- */
+.post-copyright{background:var(--sk-soft)!important;border:1px solid #eee!important;border-left:3px solid #ddd!important;border-radius:0!important;}
+.tag_share .post-meta__tags{background:#f2f2f2!important;color:#555!important;border-radius:2px!important;}
+.pagination-post .pagination-info,.pagination-post .prev_info,.pagination-post .next_info{color:#444!important;}
+.relatedPosts,.post-reward{display:none!important;}
+
+/* ---- 通用链接 ---- */
+a{color:var(--sk-link);}
+
+/* ---- 右下按钮：素色、只留必要 ---- */
+#rightside button{background:#333!important;color:#fff!important;border-radius:3px!important;}
+#rightside #readmode,#rightside #hide-aside-btn,#rightside #rightside-config-show #rightside_config{display:none!important;}
+
+/* ---- 页脚 ---- */
+#footer{background:#fff!important;border-top:1px solid var(--sk-line)!important;}
+#footer::before{display:none!important;}
+#footer-wrap,#footer .copyright,#footer .framework-info,#footer .framework-info a{color:var(--sk-sub)!important;}
+
+/* ---- 归档/分类/标签 列表页 ---- */
+#aside-content+.aside-content{display:none!important;}
+.article-sort-item{border:none!important;}
+.article-sort-item-title{color:#222!important;}
+.article-sort-item-title:hover{color:#000!important;}
+.article-sort-item-time,.article-sort-item-tags{color:var(--sk-sub)!important;}
+.tag-cloud-list a{color:#444!important;}
+.category-lists a,.category-list a{color:#333!important;}
+
+/* ===== v2 修正：去蓝色强调 / 代码块文字加深 / 进度条 ===== */
+.post-copyright-meta{color:#999!important;}
+.post-copyright-info a{color:#333!important;}
+a:hover{color:#000!important;}
+.pace,.pace-progress,.pace-activity,#pace,.page-percent,.progress-bar{display:none!important;}
+::selection{background:#e6e6e6!important;color:#000!important;}
+/* 代码块(摘录原文)文字加深、去语法高亮浅色 */
+#article-container pre{background:#f6f6f6!important;}
+#article-container pre,#article-container pre code,#article-container pre span,#article-container pre .hljs,#article-container pre .hljs *{color:#333!important;background:transparent!important;}
+/* 文章页主体也限宽居中(单栏) */
+#post,.post-content{max-width:100%!important;}
+.layout #post{float:none!important;}
+/* 移动端侧栏菜单按钮/遮罩素色 */
+#sidebar-menus{background:#fff!important;}
+/* 自定义滚动条：去主题蓝，改素灰 */
+::-webkit-scrollbar{width:9px!important;height:9px!important;}
+::-webkit-scrollbar-thumb{background:#c8c8c8!important;border-radius:0!important;border:none!important;}
+::-webkit-scrollbar-track{background:#f5f5f5!important;}
+html,body{scrollbar-color:#c8c8c8 transparent!important;}
+/* 归档/分类 时间线圆点+竖线、分页按钮 → 灰黑 */
+.article-sort-item::before{border-color:#bbb!important;}
+.article-sort-item.year::before{border-color:#888!important;}
+.article-sort-title::before{border-color:#888!important;}
+.article-sort-title{color:#222!important;}
+.article-sort{border-left-color:#e4e4e4!important;}
+.article-sort-item-time{color:#999!important;}
+.page-number.current,.pagination .page-number.current{background:#333!important;color:#fff!important;border-radius:2px!important;}
+.page-number:hover,.pagination a:hover{background:#eee!important;color:#000!important;border-radius:2px!important;}
+#pagination .page-number,.pagination .page-number{color:#444!important;}
