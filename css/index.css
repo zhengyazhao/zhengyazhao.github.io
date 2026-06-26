@@ -5763,6 +5763,30 @@ html,body{scrollbar-color:#c8c8c8 transparent!important;}
 .article-sort-item.year::before{border-color:#888!important;}
 .article-sort-title::before{border-color:#888!important;}
 .article-sort-title{color:#222!important;}
+
+/* ===== 顶部导航菜单(JS注入) ===== */
+#nav #menus{margin-left:auto!important;}
+#nav #menus .menus_item{display:inline-block!important;position:relative;}
+#nav #menus .menus_item .site-page{color:#555!important;padding:0 14px!important;font-size:.96em!important;font-weight:400!important;text-decoration:none!important;}
+#nav #menus .menus_item .site-page:hover{color:#000!important;}
+#nav #menus #toggle-menu{display:none!important;}
+@media(max-width:768px){
+  #nav #menus .menus_item{display:none!important;}
+  #nav #menus #toggle-menu{display:inline-block!important;}
+  #nav #menus #toggle-menu .site-page{color:#333!important;}
+}
+/* 列表页标题(归档/标签) 头部 */
+#page-header.not-home-page,header.not-home-page{height:auto!important;padding-top:60px!important;background:#fff!important;background-image:none!important;}
+#page-site-info{position:static!important;max-width:740px!important;margin:0 auto!important;padding:26px 22px 4px!important;box-sizing:border-box!important;}
+#page-site-info #site-title{color:#1a1a1a!important;font-size:1.7em!important;font-weight:600!important;text-align:left!important;}
+/* 标签云 */
+.tag-cloud-list{line-height:2.6!important;text-align:left!important;}
+.tag-cloud-list a{display:inline-block!important;margin:0 10px 8px 0!important;padding:4px 12px!important;background:#f4f4f4!important;color:#444!important;border-radius:2px!important;font-size:.95em!important;}
+.tag-cloud-list a:hover{background:#333!important;color:#fff!important;}
+/* 归档时间线去小图、收紧 */
+.article-sort-item-img{display:none!important;}
+.article-sort-item-title{color:#222!important;}
+.article-sort-item-title:hover{color:#000!important;}
 .article-sort{border-left-color:#e4e4e4!important;}
 .article-sort-item-time{color:#999!important;}
 .page-number.current,.pagination .page-number.current{background:#333!important;color:#fff!important;border-radius:2px!important;}
