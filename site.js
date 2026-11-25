@@ -1,78 +1,277 @@
 'use strict';
 const app = document.getElementById('main');
-const catalog = window.catalog;
-window.posts = Object.create(null);
-const categoryCounts = new Map();
-for (const entry of catalog) for (const cat of entry.cats) categoryCounts.set(cat, (categoryCounts.get(cat) || 0) + 1);
-const colors = ['#356056','#94513e','#bd8848','#546478','#665137','#8a6449','#8f7540'];
-const years = [...new Set(catalog.map(p => p.date.slice(0,4)))];
-const months = '一 二 三 四 五 六 七 八 九 十 十一 十二'.split(' ');
-const loadedYears = new Map();
-const escapeText = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const catHref = cat => '#category/'+encodeURIComponent(cat);
-function row(p,shortDate=false) {
-  return '<a class="entry" href="#post/'+p.id+'"><time class="date" datetime="'+p.date+'">'+(shortDate?p.date.slice(5):p.date)+'</time><b>'+escapeText(p.title)+'</b><i aria-hidden="true">↗</i></a>';
-}
-function crumb(text, homeLabel = '夜读书店') {return '<div class="crumb"><a href="#home">'+homeLabel+'</a>　/　'+text+'</div>'}
-function categories() {
-  const sorted=[...categoryCounts.keys()].sort((a,b)=>categoryCounts.get(b)-categoryCounts.get(a)||a.localeCompare(b,'zh'));
-  function tiles(cats){return '<div class="shelf-grid">'+cats.map((c,i)=>'<a class="shelf-link" href="'+catHref(c)+'"><i class="spine" aria-hidden="true" style="--color:'+colors[i%colors.length]+'"></i><b>'+escapeText(c)+'</b><span class="num">'+categoryCounts.get(c)+' 篇</span></a>').join('')+'</div>'}
-  return '<section class="shelf-hero"><div class="shelf-title">'+crumb('分类')+'<h1>分类书架</h1><p>'+sorted.length+' 个分类</p></div><img src="assets/shelf.webp" alt="橘猫站在矮凳上，把书放回木书架"></section><div class="shelves wrap"><section><div class="sec-head"><h2>文章最多的书架</h2></div>'+tiles(sorted.slice(0,8))+'</section><section class="others"><div class="sec-head"><h2>其他分类</h2></div>'+tiles(sorted.slice(8))+'</section></div>';
-}
-function archive(year) {
-  if(!years.includes(year)) year=years[0];
-  const list=catalog.filter(p=>p.date.startsWith(year));
-  const groups=[...new Set(list.map(p=>p.date.slice(5,7)))];
-  return '<div class="archive-layout"><aside class="archive-aside"><img src="assets/archive.webp" alt="橘猫在木制索引柜前整理卡片"><div><h1>文章归档</h1><p>'+years.at(-1)+' — '+years[0]+'　/　'+catalog.length+' 篇</p></div></aside><section class="ledger">'+crumb('归档')+'<div class="year-tabs" aria-label="按年份浏览">'+years.map(y=>'<a aria-current="'+(year===y)+'" href="#archive/'+y+'">'+y+'</a>').join('')+'</div><div class="sec-head"><h2>'+year+'</h2><span class="num">'+list.length+' 篇</span></div>'+groups.map(m=>'<section class="month"><h3>'+months[Number(m)-1]+'月</h3>'+list.filter(p=>p.date.slice(5,7)===m).map(p=>row(p,true)).join('')+'</section>').join('')+'</section></div>';
-}
-function listing(cat) {
-  const list=cat?catalog.filter(p=>p.cats.includes(cat)):catalog;
-  return '<section class="listing wrap"><div class="list-head">'+crumb(cat?'<a href="#categories">分类</a>　/　'+escapeText(cat):'文章')+'<h1>'+escapeText(cat||'全部文章')+'</h1><p>'+list.length+' 篇</p></div>'+list.map(p=>row(p)).join('')+'</section>';
-}
-function loadYear(year){
-  if(!loadedYears.has(year)) loadedYears.set(year,new Promise((resolve,reject)=>{
-    const s=document.createElement('script');s.src='assets/posts-'+year+'.js';s.onload=resolve;
-    s.onerror=()=>{loadedYears.delete(year);reject(Error('文章读取失败'))};document.head.append(s);
-  }));
-  return loadedYears.get(year);
-}
-async function article(id,route) {
-  const p=catalog[id]; if(!p) return listing();
-  await loadYear(p.date.slice(0,4)); if(location.hash!==route)return '';
-  const split=p.title.indexOf('：'), title=split>0?escapeText(p.title.slice(0,split))+'<span>'+escapeText(p.title.slice(split+1))+'</span>':escapeText(p.title);
-  const body=window.posts[id] || '<p>这篇日志的原文仅有标题。</p>';
-  return '<div class="book-layout"><figure class="portrait"><img src="assets/reader.webp" alt="戴眼镜的橘猫坐在窗边的灯下读书"></figure><div class="paper">'+crumb('<a href="#articles">文章</a>', '← 返回首页')+'<article><h1>'+title+'</h1><div class="metadata"><time>'+p.date+'</time><span class="dot"></span>zyz'+p.cats.map(c=>'<span class="dot"></span><a href="'+catHref(c)+'">'+escapeText(c)+'</a>').join('')+'</div><div class="prose">'+body+'</div><div class="article-exits"><a href="#home">← 返回首页</a><a class="original" href="'+p.url+'">查看原站文章 ↗</a></div></article></div></div>';
-}
 function home(){
-  const ids=['王阳明心学摘录','复盘方法论','思维模式'].map(t=>catalog.find(p=>p.title===t));
   return `<h1 class="sr">猫的夜读书店</h1>
     <section class="scene" aria-label="夜读书店橱窗">
       <div class="stage">
-        <img class="store-art" alt="" width="1536" height="852" fetchpriority="high">
-        <div class="scene-links">${ids.map(p=>'<a href="#post/'+p.id+'"><span>'+escapeText(p.title)+'</span></a>').join('')}</div>
+        <img class="store-art" alt="" width="2172" height="724" fetchpriority="high">
+        <div class="shopfront">
+          <span class="door-position" aria-hidden="true"></span>
+          <div class="scene-links">${recentPosts.map(p=>'<a href="#post/'+p.id+'"><span>'+escapeText(p.title)+'</span></a>').join('')}</div>
+        </div>
       </div>
     </section>
-    <section class="home-mobile"><h2>最近写的</h2>${ids.map(p=>row(p,true)).join('')}</section>`;
+    <section class="home-mobile"><h2>最近写的</h2>${recentPosts.map(p=>row(p,true)).join('')}</section>`;
 }
-let stopScene;
+let stopScene, entryController, pendingLink, activeRoom;
+const searchBox = () => app.querySelector('.search-tag input');
+function snapshotList(link) {
+  const room=app.querySelector('.shop-room');
+  const prose=app.querySelector('.prose');
+  if(prose && location.hash==='#post/'+prose.dataset.post){
+    const view={hash:location.hash,y:window.scrollY,reader:bookReader?.position()};
+    history.replaceState({...history.state,view},'');
+  }
+  if (!room) return;
+  const view = {hash:location.hash, y:window.scrollY, query:searchBox()?.value || '',
+    offset:Number(room.dataset.offset), leaf:room.querySelector('.recto')?.scrollTop || 0,
+    focus:link && room.contains(link) ? link.getAttribute('href') : null};
+  history.replaceState({...history.state,view},'');
+}
+function updateRack(offset,animate=true) {
+  const room=app.querySelector('.shop-room');
+  if(!room || !activeRoom) return;
+  const a=arrangeShelves(activeRoom,offset);
+  const direction=Math.sign(a.first-Number(room.dataset.offset));
+  room.dataset.offset=a.first;
+  room.dataset.size=a.size;
+  replaceRack(room.querySelector('.racks'),a.rows,direction,animate);
+  room.querySelector('.case-count').textContent=activeRoom.items.length+' '+activeRoom.unit;
+  room.querySelector('.no-books').hidden=activeRoom.items.length>0;
+  const controls=room.querySelector('.rack-pager');
+  const step=document.activeElement?.dataset.shelfStep;
+  controls.innerHTML=pager(a);
+  controls.hidden=a.pages===1;
+  if (step && !controls.hidden) {
+    const buttons=[...controls.querySelectorAll('button:not([disabled])')];
+    (buttons.find(b=>b.dataset.shelfStep===step)||buttons[0])?.focus({preventScroll:true});
+  }
+}
+function updateSearch() {
+  const query=searchBox().value;
+  if(activeRoom?.mode==='articles' && activeRoom.query===query)return;
+  activeRoom=shelfModel('articles',null,null,query);
+  updateRack(0);
+}
+for(const type of ['input','compositionend']) app.addEventListener(type,e=>{
+  if(!e.isComposing && e.target===searchBox())updateSearch();
+});
+app.addEventListener('click',e=>{
+  const step=e.target.closest('[data-shelf-step]');
+  if (step && activeRoom) {
+    const a=arrangeShelves(activeRoom,Number(app.querySelector('.shop-room').dataset.offset));
+    updateRack(a.first+Number(step.dataset.shelfStep)*a.size);
+  }
+  if(e.target.closest('[data-clear-search]')) {
+    searchBox().value='';updateSearch();searchBox().focus();
+  }
+});
+for(const breakpoint of [narrowCase,mediumCase]) breakpoint.addEventListener('change',()=>{
+  if(activeRoom) updateRack(Number(app.querySelector('.shop-room')?.dataset.offset || 0),false);
+});
+
+async function pickBook(link,signal) {
+  if (!link?.isConnected || !link.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cover=link.querySelector('.jacket');
+  const animations=[animateChange(link,[
+    {transform:getComputedStyle(link).transform}, {transform:'translateY(-5%) scale(1.045)'}
+  ],'open',{fill:'forwards'})];
+  if(cover) animations.push(animateChange(cover,[
+    {transform:'perspective(550px) rotateY(0)'}, {transform:'perspective(550px) rotateY(-54deg)'}
+  ],'open',{fill:'forwards'}));
+  const cancel=()=>animations.forEach(a=>a.cancel());
+  signal.addEventListener('abort',cancel,{once:true});
+  try {await Promise.allSettled(animations.map(a=>a.finished));}
+  finally {signal.removeEventListener('abort',cancel);cancel();}
+}
+let prefetchTimer;
+function prepareRecentPost(event) {
+  const link=event.target.closest('a[href^="#post/"]');
+  if (!link || navigator.connection?.saveData) return;
+  clearTimeout(prefetchTimer);
+  const post=catalog[Number(link.hash.slice(6))];
+  if(post)prefetchTimer=setTimeout(()=>loadYear(post.date.slice(0,4)).catch(()=>{}),
+    event.type==='pointerdown'?0:120);
+}
+for(const type of ['pointerover','pointerdown','focusin']) app.addEventListener(type,prepareRecentPost);
+app.addEventListener('pointerout',e=>{if(!e.target.closest('a')?.contains(e.relatedTarget))clearTimeout(prefetchTimer)});
+window.addEventListener('pagehide',()=>snapshotList(document.activeElement));
+document.addEventListener('scrollend',()=>{
+  if(app.querySelector('.prose'))snapshotList(null);
+});
+document.addEventListener('click',event=>{
+  if (event.button || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link=event.target.closest('a[href^="#"]');
+  if (!link || link.target || !link.hash) return;
+  if(link.hash===location.hash) {window.dispatchEvent(new Event('bookshop-arrive'));return;}
+  const source = location.hash || '#home';
+  snapshotList(link);
+  if (link.hasAttribute('data-return') && history.state?.origin?.hash===link.hash && history.length>1) {
+    event.preventDefault();
+    history.back();
+    return;
+  }
+  const shop = !!link.closest('.scene-links, .home-mobile');
+  let origin=null;
+  if (link.hash.startsWith('#post/') || (source==='#categories' && link.hash.startsWith('#category/')) || (source==='#archive' && link.hash.startsWith('#archive/'))) {
+    const label = shop ? '返回首页' : activeRoom?.mode==='category' ? '返回本架' :
+      source.startsWith('#archive') ? '返回归档' : '返回书架';
+    origin={hash:source,label};
+    const object=link.closest('.shelf-object');
+    if(object)origin.rect={...object.getBoundingClientRect().toJSON(),viewport:innerWidth+'x'+innerHeight};
+  }
+  pendingLink={target:link.hash,origin,shop,findBook:link.dataset.findBook,object:link.closest('.shelf-object')};
+});
+
 async function render(){
+  const route=location.hash;
+  const clicked = pendingLink?.target===route ? pendingLink : null;
+  pendingLink=null;
+  if(clicked) {
+    const view=clicked.findBook===undefined?null:{hash:route,offset:Number(clicked.findBook),focus:postHref(catalog[Number(clicked.findBook)])};
+    history.replaceState({route,origin:clicked.origin,view},'');
+  }
+  const origin=history.state?.route===route ? history.state.origin : null;
+  const saved=history.state?.view?.hash===route ? history.state.view : null;
   stopScene?.();stopScene=null;
-  const route=location.hash;let path;try{path=decodeURIComponent(route.slice(1)).split('/')}catch{path=['home']}
-  const [page,arg]=path;
+  let path;
+  try{path=route.slice(1).split('/').map(decodeURIComponent)}catch{path=['home']}
+  const [page,arg,month]=path;
   const top=page==='post'?'articles':page==='category'?'categories':page;
-  document.querySelectorAll('nav a').forEach(a=>{if(a.hash==='#'+top)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
-  let html;
+  document.querySelectorAll('nav a').forEach(a=>{
+    if(a.hash==='#'+top)a.setAttribute('aria-current','page');
+    else a.removeAttribute('aria-current');
+  });
+  const isRoom=['articles','categories','category','archive'].includes(page);
+  const homeRoute=!page || page==='home';
+  const redirect=isRoom || homeRoute || page==='post' ? passage : null;
+  if(!redirect)entryController?.abort();
+  const controller=redirect?entryController:(entryController=new AbortController());
+  const picking=redirect?Promise.resolve():bookReader ? bookReader.close(controller.signal,route) : pickBook(clicked?.object,controller.signal);
+  let html,model,phase='loading',loadNotice=false;
+  const post=page==='post'?catalog[Number(arg)]:null;
+  function readingState(state) {
+    phase=state;
+    if(location.hash!==route || controller.signal.aborted)return;
+    const prose=app.querySelector('.prose[data-phase="loading"]');
+    if(prose && prose.dataset.post===String(post.id)) {
+      prose.innerHTML=articleBody(post,phase);
+      prose.dataset.phase=phase;prose.setAttribute('aria-busy','false');
+      if(phase==='ready' && saved?.y)window.scrollTo(0,saved.y);
+      app.querySelector('.book-end').hidden=phase!=='ready';
+      bookReader?.refresh();
+      const message=prose.querySelector('.reading-message');
+      if(message)animateChange(message,[{opacity:0},{opacity:1}],'touch');
+    }
+  }
   if(page==='post'){
-    try{html=await article(Number(arg),route)}catch{html='<div class="wrap list-head"><h1>文章暂时无法读取</h1><a href="#home">← 返回首页</a>　<a href="#articles">返回文章目录</a></div>'}
-  }else if(page==='categories')html=categories();
-  else if(page==='category')html=listing(arg);
-  else if(page==='articles')html=listing();
-  else if(page==='archive')html=archive(arg);
-  else html=home();
-  if(location.hash!==route)return;
-  app.innerHTML=html;document.title=(app.querySelector('h1')?.textContent||'夜读书店')+' · zyz 的日志记录';
-  const picture=app.querySelector('.store-art');
-  if(picture) stopScene=startCatWindow(picture);
-  window.scrollTo(0,0);
+    if(post) {
+      const timer=setTimeout(()=>{
+        loadNotice=true;
+        const message=app.querySelector('.prose[data-phase="loading"] [role=status]');
+        if(message && location.hash===route && !controller.signal.aborted)message.textContent='正在取书…';
+      },150);
+      loadYear(post.date.slice(0,4)).then(()=>readingState('ready'),()=>readingState('error')).finally(()=>clearTimeout(timer));
+    }
+  }else if(isRoom){
+    model=shelfModel(page,arg,month,saved?.query);
+    html=bookcase(model,saved?.offset);
+  }else html=home();
+  await picking;
+  if(controller.signal.aborted || location.hash!==route)return;
+  let landing,mounted=false;
+  function display(prepared){
+    if(mounted)return;
+    mounted=true;
+    const previousRoom=app.querySelector('.shop-room'),wasReading=!!app.querySelector('.book-reading');
+    bookReader?.dispose();bookReader=null;
+    activeRoom=model;
+    if(page==='post')html=article(Number(arg),origin,phase);
+    if(post && prepared) {
+      const body=prepared.querySelector('.prose');
+      body.innerHTML=articleBody(post,phase);
+      body.dataset.phase=phase;body.setAttribute('aria-busy',phase==='loading');
+      prepared.querySelector('.book-end').hidden=phase!=='ready';
+    }
+    if(previousRoom && model)changeCase(previousRoom,caseElement(html));
+    else if(model)app.replaceChildren(prepared || caseElement(html));
+    else if(prepared)app.replaceChildren(prepared);
+    else if (landing) app.replaceChildren(...landing.childNodes);
+    else app.innerHTML=html;
+    if(model && prepared && Number(prepared.dataset.size)!==2*shelfColumns(model.mode))updateRack(saved?.offset || 0,false);
+    if(post) {
+      bookReader=mountReader(app.querySelector('.book-reading'),saved,origin);
+      const book=app.querySelector('.bound-book'),bounds=book.getBoundingClientRect();
+      const source=clicked?.origin?.rect;
+      const start=source ? 'translate('+(source.x-bounds.x)+'px,'+(source.y-bounds.y)+'px) scale('+source.width/bounds.width+','+source.height/bounds.height+')' : 'translateY(10px) scale(.975)';
+      animateChange(book,[{opacity:.3,transform:start,transformOrigin:'0 0'},{opacity:1,transform:'none',transformOrigin:'0 0'}],'reading-open');
+      const heading=app.querySelector('.article-heading h1');
+      heading?.focus({preventScroll:true});
+      if(heading)animateChange(heading,[{opacity:.5,transform:'translateY(3px)'},{opacity:1,transform:'none'}]);
+      if(phase==='loading' && loadNotice)app.querySelector('.reading-message').textContent='正在取书…';
+    }
+    document.title=(app.querySelector('h1')?.textContent||'夜读书店')+' · zyz 的日志记录';
+    const picture=app.querySelector('.store-art');
+    if(picture) stopScene=startCatWindow(picture);
+    window.scrollTo(0,saved?.y || 0);
+    const leaf=app.querySelector('.recto');
+    if (leaf && saved) leaf.scrollTop=saved.leaf;
+    const restored=saved?.focus && [...app.querySelectorAll('a')].find(a=>a.getAttribute('href')===saved.focus);
+    if(restored) {
+      restored.focus({preventScroll:true});
+      if(wasReading && restored.matches('.shelf-object')) {
+        animateChange(restored,[{transform:'translateY(-6px) scale(1.025)'},{transform:'none'}]);
+        const jacket=restored.querySelector('.jacket');
+        if(jacket)animateChange(jacket,[{transform:'perspective(550px) rotateY(-38deg)'},{transform:'none'}]);
+      }
+    }
+  }
+
+  if(redirect && passage===redirect) {
+    const template=document.createElement('template');
+    template.innerHTML=post?article(Number(arg),origin,phase):html || '';
+    redirect.turn(!!model || !!post,model || post ? template.content.firstElementChild : null,display);
+    return;
+  }
+  const inside=app.querySelector('.shop-room,.book-reading');
+  const leave=(!page || page==='home') && !!(inside || app.querySelector('article'));
+  const enter=app.querySelector('.stage') && (model || post);
+  if (!leave && !enter) {display();return;}
+  try {
+    let stage = app.querySelector('.stage');
+    if (leave) {
+      // Measure the actual destination before moving it into the document flow.
+      landing = document.createElement('div');
+      landing.className = 'home-destination';
+      landing.inert = true;
+      landing.innerHTML = html;
+      document.body.append(landing);
+      stage = landing.querySelector('.stage');
+      applyCatScene(stage.querySelector('.store-art'), beijingBookshopScene(Date.now()));
+    }
+    let shelfInterior;
+    if (enter && (model || post)) {
+      const template=document.createElement('template');
+      template.innerHTML=post?article(Number(arg),origin,phase):html;
+      shelfInterior=template.content.firstElementChild;
+    } else if (leave && inside) {
+      shelfInterior=inside;
+    }
+    if(shelfInterior)await crossThreshold(stage,shelfInterior,leave,display,controller.signal);
+    else display();
+    if (!controller.signal.aborted && !app.querySelector(':focus')) app.focus({preventScroll:true});
+  } finally { landing?.remove(); }
 }
+// The router positions each destination; browser restoration would move the article before the exit shot.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Escape' || passage || event.target.matches('input'))return;
+  const close=app.querySelector('.shut-book,.reading-toolbar .crumb a');
+  if(close){event.preventDefault();close.click();}
+});
+app.addEventListener('click',e=>{if(e.target.closest('[data-retry]'))render()});
 window.addEventListener('hashchange',render);render();
+for(const type of ['focusin','pointerover','pointerdown']) document.querySelector('header nav').addEventListener(type,e=>{
+  const link=e.target.closest('a');
+  if(link && app.querySelector('.stage'))warmShelves(link.hash.slice(1));
+});

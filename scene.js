@@ -23,10 +23,36 @@ function beijingBookshopScene(now) {
   const seasons = [['winter','冬'],['spring','春'],['summer','夏'],['autumn','秋']];
   const [season, label] = seasons[Math.floor(((month+1)%12)/3)];
   return {
-    src:'assets/cat/'+season+'-'+(day?'day':'night')+'.webp',
+    src:'assets/cat/panorama/'+season+'-'+(day?'day':'night')+'.webp',
+    variant:season+'-'+(day?'day':'night'),
+    period:day?'day':'night',
     alt:label+(day?'日，戴眼镜的橘猫坐在书店窗边打字':'夜，戴眼镜的橘猫在书店灯下读书'),
     nextChange:now < sunrise ? sunrise : day ? sunset : midnight + dayMs - offset
   };
+}
+
+function applyCatScene(picture, scene) {
+  picture.dataset.requested=scene.src;
+  if (picture.getAttribute('src') === scene.src) return;
+  const stage=picture.closest('.stage');
+  function install() {
+    if (picture.dataset.requested!==scene.src || !stage.isConnected) return;
+    const old=picture.getAttribute('src') && picture.complete && picture.naturalWidth && !reducedMotion.matches
+      ? picture.cloneNode(false) : null;
+    picture.alt=scene.alt; picture.src=scene.src;
+    stage.dataset.period=scene.period; stage.dataset.variant=scene.variant;
+    stage.classList.remove('missing-art');
+    picture.onerror=()=>stage.classList.add('missing-art');
+    if(old) {
+      old.className='previous-season';old.alt='';old.setAttribute('aria-hidden','true');
+      picture.after(old);
+      const fade=animateChange(old,[{opacity:1},{opacity:0}]);
+      if(fade)fade.finished.then(()=>old.remove(),()=>old.remove());else old.remove();
+    }
+  }
+  if(!picture.getAttribute('src'))install();
+  else {loadEntryImage(scene.src).then(install).catch(()=>{});return;}
+
 }
 
 function startCatWindow(picture) {
@@ -35,10 +61,7 @@ function startCatWindow(picture) {
     clearTimeout(timer);
     if (document.hidden) return;
     const now = Date.now(), scene = beijingBookshopScene(now);
-    if (picture.getAttribute('src') !== scene.src) {
-      picture.alt = scene.alt;
-      picture.src = scene.src;
-    }
+    applyCatScene(picture, scene);
     timer = setTimeout(update, Math.ceil(scene.nextChange - now) + 1);
   }
   document.addEventListener('visibilitychange',update);
