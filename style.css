@@ -9,8 +9,10 @@
 }
 .sr,.scene-links a span{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
 .scene{overflow:hidden;background:var(--deep)}
-.stage{position:relative;width:100%;height:calc(100vh - var(--header-height));height:calc(100dvh - var(--header-height))}
-.store-art{display:block;width:100%;height:100%;object-fit:fill}
+.stage{position:relative;width:100%;height:calc(100vh - var(--header-height));height:calc(100dvh - var(--header-height));min-height:calc(100vw / 3)}
+.store-art{position:absolute;top:0;left:0;display:block;width:100%;height:auto;aspect-ratio:3;object-fit:contain;mask-image:linear-gradient(#000 89%,transparent 100%)}
+.street { position:absolute; top:var(--street-top); bottom:0; width:100%; overflow:hidden; }
+.street-plane { width:100%; height:100%; background:var(--street-image) center top / cover no-repeat; filter:var(--street-tone); }
 .scene-links{position:absolute;inset:24% 3.2% auto 72%;height:30.5%;display:grid;grid-template-rows:repeat(3,1fr)}
 .scene-links a{border-radius:3px}
 .scene-links a:hover,.scene-links a:focus-visible{background:#f6d58635;box-shadow:inset 0 0 0 1px #a97946}
@@ -21,10 +23,10 @@
 }
 
 /* The architectural anchors on the 3:1 paintings share one coordinate system. */
-.shopfront { position:absolute; left:25%; top:8.4%; width:50%; height:83.2%; pointer-events:none; }
+.shopfront { position:absolute; left:25%; top:calc(var(--painting-height)*.084); width:50%; height:calc(var(--painting-height)*.832); pointer-events:none; }
 .stage[data-variant="autumn-day"] .shopfront,
 .stage[data-variant="spring-day"] .shopfront { left:22.9%; }
-.stage[data-variant="spring-day"] .shopfront { top:2.1%; }
+.stage[data-variant="spring-day"] .shopfront { top:calc(var(--painting-height)*.021); }
 .door-position { position:absolute; left:53.3%; top:3.3%; width:14%; height:71.8%; }
 .scene-links { pointer-events:auto; }
 .home-destination { position:fixed; inset:var(--header-height) 0 auto; visibility:hidden; pointer-events:none; }
@@ -221,7 +223,8 @@ nav a[aria-current="page"]::after { transform:scaleX(1); opacity:1; }
 .moving-facade span { position:absolute; display:block; background-repeat:no-repeat; }
 .case-count,.rack-pager span { font-variant-numeric:tabular-nums; }.rack-pager span { min-width:5.8em; text-align:center; }
 .room-frame { background:linear-gradient(#57402e,#715239 46%,#835a38 47%,#5d4634 75%,#805936 76%); }
-.previous-season { position:absolute; inset:0; width:100%; height:100%; object-fit:fill; pointer-events:none; }
+.previous-season { position:absolute; inset:0; pointer-events:none; }
+.previous-art { position:absolute; top:0; left:0; width:100%; height:auto; aspect-ratio:3; mask-image:linear-gradient(#000 89%,transparent 100%); }
 .jacket { background-color:#37483b; }.room-frame[inert] { pointer-events:none; }
 .reading-message { min-height:100px; padding:28px 0; color:#735d47; font:16px var(--serif); }
 .reading-message button { cursor:pointer; background:#fbefce; color:#3c473c; border:1px solid #b39b72; padding:5px 12px; }

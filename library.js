@@ -61,7 +61,7 @@ function article(id,origin,phase) {
   const period=beijingBookshopScene(Date.now()).period;
   return `<section class="book-reading" style="--reading-room:url('assets/interior/wall-${period}.webp')">
     <div class="reading-toolbar"><div class="crumb">${back}${home}</div><a class="original-entry" href="${escapeText(post.url)}">原文 ↗</a></div>
-    <div class="bound-book" aria-label="${escapeText(post.title)}">
+    <div class="bound-book" data-cover="closed" aria-label="${escapeText(post.title)}">
       <div class="folio-window" tabindex="0" aria-label="文章书页">
         <article class="folio-flow"><div class="article-heading"><h1 tabindex="-1">${escapeText(post.title)}</h1>
           <div class="metadata"><time datetime="${post.date}">${post.date}</time><span>zyz</span>

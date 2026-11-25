@@ -4,7 +4,7 @@
   position:relative; isolation:isolate; overflow:hidden; background:#352c22;
 }
 .book-reading::before {
-  content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(#15251ee0,#2c2018c9),var(--reading-room) center/100% 100%;
+  content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(#15251ee0,#2c2018c9),var(--reading-room) center/cover;
 }
 #main:has(.book-reading) { min-height:0; }
 #main:has(.book-reading)+footer { display:none; }
@@ -91,11 +91,15 @@
 @media(prefers-reduced-motion:reduce) { .page-turn { display:none!important; } }
 .reading-cover {
  position:absolute; top:0; bottom:0; left:50%; width:50%; transform-origin:left center; background-color:#314639;
- background-size:100% 100%; border-radius:0 5px 5px 0; box-shadow:inset 5px 0 6px #0c161984,1px 2px 8px #1d1a1255;
+ background-size:cover; background-position:center; border-radius:0 5px 5px 0; box-shadow:inset 5px 0 6px #0c161984,1px 2px 8px #1d1a1255;
  z-index:5; backface-visibility:hidden; pointer-events:none;
 }
+.bound-book[data-cover="closed"] { clip-path:inset(-40px -40px -60px 50%); }
 .reading-cover span { position:absolute; top:15%; left:13%; right:13%; text-align:center; color:#fff0cb; font:600 clamp(24px,3vw,40px)/1.5 var(--serif); }
-@media(max-width:900px) { .reading-cover { width:100%; left:0; } }
+@media(max-width:900px) {
+ .reading-cover { width:100%; left:0; }
+ .bound-book[data-cover="closed"] { clip-path:inset(-40px -40px -60px -40px); }
+}
 .folio-flow { line-break:strict; }
 @media(prefers-reduced-motion:no-preference) {
  .folio-controls button { transition:background-color var(--touch) var(--settle),opacity var(--touch) var(--settle),transform var(--touch) var(--settle); }

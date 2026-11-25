@@ -263,8 +263,14 @@ function mountReader(root,saved,origin) {
   layout();
   const cover=root.querySelector('.reading-cover');
   let coverPhase='opening';
+  // A spread must become a single closed book before the camera leaves the room.
+  const openShape='inset(-40px -40px -60px -40px)';
+  const closedShape=()=>columns===2?'inset(-40px -40px -60px 50%)':openShape;
+  let folding=null;
+  book.dataset.cover='open';
   if(cover) {
     const opening=animateChange(cover,[{transform:'rotateY(0deg)'},{transform:'rotateY(-165deg)',opacity:0}],'reading-open');
+    folding=animateChange(book,[{clipPath:closedShape()},{clipPath:openShape}],'reading-open');
     const finishCover=()=>{if(coverPhase==='opening')cover.hidden=true;};
     if(opening)opening.finished.then(finishCover,finishCover);
     else cover.hidden=true;
@@ -275,18 +281,28 @@ function mountReader(root,saved,origin) {
     async close(signal,target) {
       if(reducedMotion.matches || !cover || !root.isConnected)return;
       discardTurn();coverPhase='closing';
+      const shape=getComputedStyle(book).clipPath;
+      const transform=getComputedStyle(cover).transform,opacity=getComputedStyle(cover).opacity;
+      const wasHidden=cover.hidden;
+      folding?.cancel();
       for(const animation of cover.getAnimations())animation.cancel();
       cover.hidden=false;
-      const closing=animateChange(cover,[{transform:'rotateY(-165deg)',opacity:0},{transform:'rotateY(0deg)',opacity:1}],'reading-close',{fill:'forwards'});
+      const closing=animateChange(cover,[{transform:wasHidden?'rotateY(-165deg)':transform,opacity:wasHidden?0:opacity},{transform:'rotateY(0deg)',opacity:1}],'reading-close',{fill:'forwards'});
+      folding=animateChange(book,[{clipPath:shape==='none'?openShape:shape},{clipPath:closedShape()}],'reading-close',{fill:'forwards'});
       const destination=target===origin?.hash?origin.rect:null;
       const bounds=book.getBoundingClientRect();
       const returning=destination?.viewport===innerWidth+'x'+innerHeight ? animateChange(book,[
         {transform:'none',transformOrigin:'0 0',opacity:1},
         {transform:'translate('+(destination.x-bounds.x)+'px,'+(destination.y-bounds.y)+'px) scale('+destination.width/bounds.width+','+destination.height/bounds.height+')',transformOrigin:'0 0',opacity:0}
       ],'reading-close',{fill:'forwards'}):null;
-      const cancel=()=>{closing?.cancel();returning?.cancel()};
+      const cancel=()=>{
+        for(const animation of [closing,returning,folding]) {
+          if(animation?.playState==='running')animation.commitStyles();
+          animation?.cancel();
+        }
+      };
       signal.addEventListener('abort',cancel,{once:true});
-      await Promise.allSettled([closing?.finished,returning?.finished]);
+      await Promise.allSettled([closing?.finished,returning?.finished,folding?.finished]);
       signal.removeEventListener('abort',cancel);
     },
     dispose(){disposed=true;if(window.cancelIdleCallback)cancelIdleCallback(warming);else clearTimeout(warming);events.abort();observer.disconnect();cancelAnimationFrame(reflow);discardTurn();},

@@ -4,6 +4,7 @@ function home(){
   return `<h1 class="sr">猫的夜读书店</h1>
     <section class="scene" aria-label="夜读书店橱窗">
       <div class="stage">
+        <div class="street" aria-hidden="true"><div class="street-plane"></div></div>
         <img class="store-art" alt="" width="2172" height="724" fetchpriority="high">
         <div class="shopfront">
           <span class="door-position" aria-hidden="true"></span>

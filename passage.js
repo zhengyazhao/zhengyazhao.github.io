@@ -14,11 +14,11 @@ async function crossThreshold(stage,interior,fromInside,commit,signal) {
   const scroll=interior.querySelector('.recto')?.scrollTop || 0;
   field.append(interior);
   document.body.append(viewport);
-  const view=viewport.getBoundingClientRect(),bounds=stage.getBoundingClientRect(),leaf=stage.querySelector('.door-position').getBoundingClientRect();
+  const view=viewport.getBoundingClientRect(),bounds=photo.getBoundingClientRect(),leaf=stage.querySelector('.door-position').getBoundingClientRect();
   const dw=leaf.width,dh=leaf.height,W=view.width,H=view.height;
   const dx=leaf.x-view.x+dw/2,dy=leaf.y-view.y+dh/2;
   const maxScale=1.02*Math.max(W/dw,H/dh);
-  const door=mountFacade(front,photo,bounds,leaf);
+  const door=mountFacade(front,photo,bounds,leaf,stage);
   const base=document.getElementById('main');
   if(fromInside && field.querySelector('.recto')) field.querySelector('.recto').scrollTop=scroll;
   let progress=fromInside?1:0, goal=fromInside?0:1, onArrive=commit;

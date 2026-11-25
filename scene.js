@@ -31,20 +31,33 @@ function beijingBookshopScene(now) {
   };
 }
 
+function sizeCatScene(stage) {
+  const paintHeight=stage.clientWidth/3;
+  stage.style.setProperty('--painting-height',paintHeight+'px');
+  stage.style.setProperty('--street-top',paintHeight*.86+'px');
+}
+
 function applyCatScene(picture, scene) {
   picture.dataset.requested=scene.src;
   if (picture.getAttribute('src') === scene.src) return;
   const stage=picture.closest('.stage');
   function install() {
     if (picture.dataset.requested!==scene.src || !stage.isConnected) return;
-    const old=picture.getAttribute('src') && picture.complete && picture.naturalWidth && !reducedMotion.matches
-      ? picture.cloneNode(false) : null;
+    let old;
+    if(picture.getAttribute('src') && picture.complete && picture.naturalWidth && !reducedMotion.matches) {
+      old=document.createElement('div');old.className='previous-season';old.setAttribute('aria-hidden','true');
+      old.style.cssText=stage.style.cssText;
+      const art=picture.cloneNode(false);art.className='previous-art';art.alt='';
+      old.append(stage.querySelector('.street').cloneNode(true),art);
+    }
     picture.alt=scene.alt; picture.src=scene.src;
+    stage.style.setProperty('--street-image','url("assets/cat/panorama/street-'+(scene.variant.startsWith('winter')?'winter':'leafy')+'.webp")');
+    stage.style.setProperty('--street-tone',scene.period==='night'?'brightness(.28) saturate(.65)':'none');
+    sizeCatScene(stage);
     stage.dataset.period=scene.period; stage.dataset.variant=scene.variant;
     stage.classList.remove('missing-art');
     picture.onerror=()=>stage.classList.add('missing-art');
     if(old) {
-      old.className='previous-season';old.alt='';old.setAttribute('aria-hidden','true');
       picture.after(old);
       const fade=animateChange(old,[{opacity:1},{opacity:0}]);
       if(fade)fade.finished.then(()=>old.remove(),()=>old.remove());else old.remove();
@@ -66,10 +79,13 @@ function startCatWindow(picture) {
   }
   document.addEventListener('visibilitychange',update);
   window.addEventListener('pageshow',update);
+  const observer=new ResizeObserver(()=>sizeCatScene(picture.closest('.stage')));
+  observer.observe(picture.closest('.stage'));
   update();
   return () => {
     clearTimeout(timer);
     document.removeEventListener('visibilitychange',update);
     window.removeEventListener('pageshow',update);
+    observer.disconnect();
   };
 }
