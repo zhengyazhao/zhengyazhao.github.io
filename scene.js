@@ -37,12 +37,19 @@ function sizeCatScene(stage) {
   stage.style.setProperty('--street-top',paintHeight*.86+'px');
 }
 
+const sceneTasks=new WeakMap();
+const streetImage=variant=>'assets/cat/panorama/street-'+(variant.startsWith('winter')?'winter':'leafy')+'.webp';
+function prepareCatScene(scene) {
+  return Promise.all([loadEntryImage(scene.src),loadEntryImage(streetImage(scene.variant))]);
+}
+
 function applyCatScene(picture, scene) {
+  if(picture.dataset.requested===scene.src && sceneTasks.has(picture))return sceneTasks.get(picture);
   picture.dataset.requested=scene.src;
-  if (picture.getAttribute('src') === scene.src) return;
   const stage=picture.closest('.stage');
-  function install() {
-    if (picture.dataset.requested!==scene.src || !stage.isConnected) return;
+  sizeCatScene(stage);
+  const ready=prepareCatScene(scene).then(async()=>{
+    if (sceneTasks.get(picture)!==ready || !stage.isConnected) return false;
     let old;
     if(picture.getAttribute('src') && picture.complete && picture.naturalWidth && !reducedMotion.matches) {
       old=document.createElement('div');old.className='previous-season';old.setAttribute('aria-hidden','true');
@@ -51,7 +58,7 @@ function applyCatScene(picture, scene) {
       old.append(stage.querySelector('.street').cloneNode(true),art);
     }
     picture.alt=scene.alt; picture.src=scene.src;
-    stage.style.setProperty('--street-image','url("assets/cat/panorama/street-'+(scene.variant.startsWith('winter')?'winter':'leafy')+'.webp")');
+    stage.style.setProperty('--street-image','url("'+streetImage(scene.variant)+'")');
     stage.style.setProperty('--street-tone',scene.period==='night'?'brightness(.28) saturate(.65)':'none');
     sizeCatScene(stage);
     stage.dataset.period=scene.period; stage.dataset.variant=scene.variant;
@@ -62,10 +69,17 @@ function applyCatScene(picture, scene) {
       const fade=animateChange(old,[{opacity:1},{opacity:0}]);
       if(fade)fade.finished.then(()=>old.remove(),()=>old.remove());else old.remove();
     }
-  }
-  if(!picture.getAttribute('src'))install();
-  else {loadEntryImage(scene.src).then(install).catch(()=>{});return;}
-
+    await picture.decode();
+    return sceneTasks.get(picture)===ready && stage.isConnected;
+  }).catch(()=>{
+    if(sceneTasks.get(picture)===ready) {
+      sceneTasks.delete(picture);
+      if(!picture.naturalWidth)stage.classList.add('missing-art');
+    }
+    return false;
+  });
+  sceneTasks.set(picture,ready);
+  return ready;
 }
 
 function startCatWindow(picture) {
@@ -73,6 +87,7 @@ function startCatWindow(picture) {
   function update() {
     clearTimeout(timer);
     if (document.hidden) return;
+    if(document.querySelector('.shelf-portal')) {timer=setTimeout(update,250);return;}
     const now = Date.now(), scene = beijingBookshopScene(now);
     applyCatScene(picture, scene);
     timer = setTimeout(update, Math.ceil(scene.nextChange - now) + 1);

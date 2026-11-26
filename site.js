@@ -200,6 +200,8 @@ async function render(){
     else if (landing) app.replaceChildren(...landing.childNodes);
     else app.innerHTML=html;
     if(model && prepared && Number(prepared.dataset.size)!==2*shelfColumns(model.mode))updateRack(saved?.offset || 0,false);
+    // Direct visits to an interior route may not have loaded the storefront yet.
+    if(post || model)prepareCatScene(beijingBookshopScene(Date.now())).catch(()=>{});
     if(post) {
       bookReader=mountReader(app.querySelector('.book-reading'),saved,origin);
       const book=app.querySelector('.bound-book'),bounds=book.getBoundingClientRect();

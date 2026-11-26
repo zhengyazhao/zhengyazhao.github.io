@@ -6,7 +6,24 @@ let visitedShelves=false;
 // One moving facade and one hinged leaf. The aperture reveals the actual shelf DOM.
 async function crossThreshold(stage,interior,fromInside,commit,signal) {
   const photo=stage.querySelector('.store-art');
-  if(reducedMotion.matches || stage.classList.contains('missing-art')) {commit();return;}
+  // Keep the current view intact until every layer used by the return shot is decoded.
+  // An interrupted load must never move or replace the newer route's DOM.
+  const returnLink=fromInside?interior.querySelector('.reading-toolbar a[href="#home"],.case-back'):null;
+  const label=returnLink?.textContent;
+  const notice=setTimeout(()=>{
+    if(returnLink?.isConnected){returnLink.textContent='正在返回…';returnLink.setAttribute('aria-busy','true');}
+  },180);
+  const ready=await new Promise(resolve=>{
+    const finish=value=>{signal.removeEventListener('abort',cancel);resolve(value);};
+    const cancel=()=>finish(false);
+    if(signal.aborted){resolve(false);return;}
+    signal.addEventListener('abort',cancel,{once:true});
+    Promise.resolve(sceneTasks.get(photo)).then(finish,()=>finish(false));
+  });
+  clearTimeout(notice);
+  if(returnLink){returnLink.textContent=label;returnLink.removeAttribute('aria-busy');}
+  if(signal.aborted)return;
+  if(!ready || reducedMotion.matches || stage.classList.contains('missing-art')) {commit();return;}
   const viewport=document.createElement('div');
   viewport.className='shelf-portal';
   viewport.innerHTML='<div class="aperture"><div class="portal-field"></div></div><div class="moving-facade" aria-hidden="true"></div>';
